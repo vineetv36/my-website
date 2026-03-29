@@ -16,7 +16,10 @@
     <div class="nav-hamburger"><span></span><span></span></div>
   </nav>
 
-  <div class="info-wrap" id="info-wrap"></div>
+  <div class="info-layout">
+    <div class="info-content" id="info-content"></div>
+    <div class="info-photo" id="info-photo"></div>
+  </div>
 
   <footer>
     <span class="footer-copy" id="footer-copy"></span>
@@ -36,8 +39,18 @@
       navLinks.appendChild(a);
     });
 
+    // Photo
+    const photoWrap = document.getElementById("info-photo");
+    if (CONFIG.info.portrait) {
+      const img = document.createElement("img");
+      img.src = CONFIG.info.portrait;
+      img.alt = CONFIG.name;
+      img.loading = "lazy";
+      photoWrap.appendChild(img);
+    }
+
     // Info sections
-    const wrap = document.getElementById("info-wrap");
+    const wrap = document.getElementById("info-content");
     const sections = [];
 
     // About
