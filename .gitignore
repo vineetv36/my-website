@@ -1,6 +1,9 @@
 # Original images — keep locally, only commit the .webp versions
 public/images/**/*.jpg
+public/images/**/*.JPG
 public/images/**/*.jpeg
+public/images/**/*.JPEG
 public/images/**/*.png
+public/images/**/*.PNG
 public/images/**/*.tiff
 public/images/**/*.tif

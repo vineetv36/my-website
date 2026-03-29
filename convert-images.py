@@ -20,7 +20,7 @@ import argparse
 from pathlib import Path
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError:
     print("Pillow is required. Install it with: pip3 install Pillow")
     sys.exit(1)
@@ -37,6 +37,9 @@ def convert_image(src, max_width, quality):
         return None
 
     img = Image.open(src)
+
+    # Apply EXIF orientation so the image isn't rotated
+    img = ImageOps.exif_transpose(img)
 
     # Convert RGBA/palette to RGB for WebP compatibility
     if img.mode in ("RGBA", "P"):
