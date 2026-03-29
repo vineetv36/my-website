@@ -12,7 +12,7 @@
 }
 
 html { -webkit-font-smoothing: antialiased; }
-body { background: var(--bg); color: var(--text); font-family: var(--font); }
+body { background: var(--bg); color: var(--text); font-family: var(--font); font-weight: 500; }
 
 /* Nav */
 nav {
@@ -21,13 +21,13 @@ nav {
   position: sticky; top: 0; background: var(--bg); z-index: 10;
 }
 .nav-left { display: flex; align-items: center; gap: 20px; }
-.site-name { font-size: 16px; color: var(--text); text-decoration: none; }
+.site-name { font-size: 16px; color: var(--text); text-decoration: none; font-weight: 600; }
 .nav-icons { display: flex; align-items: center; gap: 14px; }
 .nav-icons a { color: var(--text-muted); transition: color 0.1s; display: flex; }
 .nav-icons a:hover { color: var(--text); }
 .nav-icons svg { width: 18px; height: 18px; }
 .nav-links { display: flex; gap: 24px; }
-.nav-links a { font-size: 15px; color: var(--text-muted); text-decoration: none; transition: color 0.1s; }
+.nav-links a { font-size: 15px; color: var(--text-muted); text-decoration: none; transition: color 0.1s; font-weight: 500; }
 .nav-links a:hover, .nav-links a.active { color: var(--text); }
 .nav-hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 4px; }
 .nav-hamburger span { display: block; width: 18px; height: 0.5px; background: var(--text-muted); }
