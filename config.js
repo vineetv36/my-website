@@ -4,7 +4,7 @@ const CONFIG = {
 
   nav: {
     links: [
-      { label: "Overview", href: "index.html" },
+      { label: "Photography", href: "index.html" },
       { label: "Travel",   href: "travel.html" },
       { label: "Videos",   href: "videos.html" },
       { label: "Info",     href: "info.html" },

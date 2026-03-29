@@ -8,7 +8,10 @@
 </head>
 <body>
   <nav>
-    <a class="site-name" href="index.html" id="nav-name"></a>
+    <div class="nav-left">
+      <a class="site-name" href="index.html" id="nav-name"></a>
+      <div class="nav-icons" id="nav-icons"></div>
+    </div>
     <div class="nav-links" id="nav-links"></div>
     <div class="nav-hamburger"><span></span><span></span></div>
   </nav>
@@ -37,6 +40,8 @@
       a.textContent = l.label;
       navLinks.appendChild(a);
     });
+
+
 
     // Photo grid
     const grid = document.getElementById("photo-grid");
