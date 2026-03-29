@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <a class="site-name" href="index.html" id="nav-name"></a>
+      <div class="nav-icons" id="nav-icons"></div>
+    </div>
+    <div class="nav-links" id="nav-links"></div>
+    <div class="nav-hamburger"><span></span><span></span></div>
+  </nav>
+
+  <div class="video-grid" id="video-grid"></div>
+
+  <footer>
+    <span class="footer-copy" id="footer-copy"></span>
+    <div class="footer-links" id="footer-links"></div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="nav.js"></script>
+  <script>
+    // Nav
+    document.getElementById("nav-name").textContent = CONFIG.name;
+    const navLinks = document.getElementById("nav-links");
+    CONFIG.nav.links.forEach(l => {
+      const a = document.createElement("a");
+      a.href = l.href;
+      a.textContent = l.label;
+      navLinks.appendChild(a);
+    });
+
+    // Play button SVG
+    const playSVG = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 12,7 3,13" fill="rgba(255,255,255,0.7)"/></svg>';
+
+    // Video grid
+    const grid = document.getElementById("video-grid");
+    const videos = CONFIG.videos;
+
+    if (videos.length === 0) {
+      const placeholderBgs = ["#1a1a1a","#1e1e1e","#222222","#1c1c1c"];
+      for (let i = 0; i < 4; i++) {
+        const card = document.createElement("div");
+        card.className = "video-card";
+        card.innerHTML =
+          '<div class="video-thumb" style="background:' + placeholderBgs[i] + '">' +
+            '<div class="play-btn">' + playSVG + '</div>' +
+          '</div>' +
+          '<div class="video-meta">' +
+            '<div class="video-title" style="color:var(--text-faint)">Add your first video — edit config.js</div>' +
+          '</div>';
+        grid.appendChild(card);
+      }
+    } else {
+      videos.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "video-card";
+        card.addEventListener("click", () => window.open(v.url, "_blank"));
+        card.innerHTML =
+          '<div class="video-thumb">' +
+            '<img src="' + v.thumbnail + '" alt="' + v.title + '" loading="lazy">' +
+            '<div class="play-btn">' + playSVG + '</div>' +
+          '</div>' +
+          '<div class="video-meta">' +
+            '<div class="video-title">' + v.title + '</div>' +
+            '<div class="video-sub">' + v.category + ' · ' + v.runtime + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    }
+
+    // Footer
+    document.getElementById("footer-copy").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
+    const footerLinks = document.getElementById("footer-links");
+    CONFIG.info.elsewhere.forEach(link => {
+      if (!link.url) return;
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.target = "_blank";
+      a.textContent = link.label;
+      footerLinks.appendChild(a);
+    });
+    const contactA = document.createElement("a");
+    contactA.href = "info.html";
+    contactA.textContent = "Contact";
+    footerLinks.appendChild(contactA);
+  </script>
+</body>
+</html>
