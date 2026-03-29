@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Info</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a class="site-name" href="index.html" id="nav-name"></a>
+    <div class="nav-links" id="nav-links"></div>
+    <div class="nav-hamburger"><span></span><span></span></div>
+  </nav>
+
+  <div class="info-wrap" id="info-wrap"></div>
+
+  <footer>
+    <span class="footer-copy" id="footer-copy"></span>
+    <div class="footer-links" id="footer-links"></div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="nav.js"></script>
+  <script>
+    // Nav
+    document.getElementById("nav-name").textContent = CONFIG.name;
+    const navLinks = document.getElementById("nav-links");
+    CONFIG.nav.links.forEach(l => {
+      const a = document.createElement("a");
+      a.href = l.href;
+      a.textContent = l.label;
+      navLinks.appendChild(a);
+    });
+
+    // Info sections
+    const wrap = document.getElementById("info-wrap");
+    const sections = [];
+
+    // About
+    sections.push({
+      label: "About",
+      html: '<div class="info-body">' + CONFIG.info.bio.map(p => '<p>' + p + '</p>').join('') + '</div>'
+    });
+
+    // Selected clients
+    if (CONFIG.info.clients.length > 0) {
+      sections.push({
+        label: "Selected clients",
+        html: '<ul class="info-list">' + CONFIG.info.clients.map(c =>
+          '<li>' + c.name + '<span>' + c.years + '</span></li>'
+        ).join('') + '</ul>'
+      });
+    }
+
+    // Gear
+    if (CONFIG.info.gear.length > 0) {
+      sections.push({
+        label: "Gear",
+        html: '<ul class="info-list">' + CONFIG.info.gear.map(g =>
+          '<li>' + g + '</li>'
+        ).join('') + '</ul>'
+      });
+    }
+
+    // Contact
+    sections.push({
+      label: "Contact",
+      html: '<div class="info-body"><p><a class="info-link" href="mailto:' + CONFIG.email + '">' + CONFIG.email + '</a></p><p>Available for editorial, commercial, and personal commissions.</p></div>'
+    });
+
+    // Elsewhere
+    if (CONFIG.info.elsewhere.length > 0) {
+      sections.push({
+        label: "Elsewhere",
+        html: '<ul class="info-list">' + CONFIG.info.elsewhere.map(l =>
+          '<li><a class="info-link" href="' + (l.url || '#') + '" target="_blank">' + l.label + '</a></li>'
+        ).join('') + '</ul>'
+      });
+    }
+
+    sections.forEach((s, i) => {
+      const section = document.createElement("div");
+      section.className = "info-section";
+      section.innerHTML = '<div class="info-label">' + s.label + '</div>' + s.html;
+      wrap.appendChild(section);
+
+      // Add divider after every section except the last
+      if (i < sections.length - 1) {
+        const divider = document.createElement("div");
+        divider.className = "info-divider";
+        wrap.appendChild(divider);
+      }
+    });
+
+    // Footer
+    document.getElementById("footer-copy").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
+    const footerLinks = document.getElementById("footer-links");
+    CONFIG.info.elsewhere.forEach(link => {
+      if (!link.url) return;
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.target = "_blank";
+      a.textContent = link.label;
+      footerLinks.appendChild(a);
+    });
+    const contactA = document.createElement("a");
+    contactA.href = "info.html";
+    contactA.textContent = "Contact";
+    footerLinks.appendChild(contactA);
+  </script>
+</body>
+</html>

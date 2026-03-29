@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a class="site-name" href="index.html" id="nav-name"></a>
+    <div class="nav-links" id="nav-links"></div>
+    <div class="nav-hamburger"><span></span><span></span></div>
+  </nav>
+
+  <div class="photo-grid" id="photo-grid"></div>
+
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="">
+    <span class="lightbox-hint">click anywhere · esc to close</span>
+  </div>
+
+  <footer>
+    <span class="footer-copy" id="footer-copy"></span>
+    <div class="footer-links" id="footer-links"></div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="nav.js"></script>
+  <script>
+    // Nav
+    document.getElementById("nav-name").textContent = CONFIG.name;
+    const navLinks = document.getElementById("nav-links");
+    CONFIG.nav.links.forEach(l => {
+      const a = document.createElement("a");
+      a.href = l.href;
+      a.textContent = l.label;
+      navLinks.appendChild(a);
+    });
+
+    // Photo grid
+    const grid = document.getElementById("photo-grid");
+    const rhythm = CONFIG.overview.rhythm;
+    const photos = CONFIG.overview.photos;
+
+    if (photos.length === 0) {
+      const placeholderBgs = ["#1a1a1a","#1e1e1e","#222222","#1c1c1c","#202020","#181818","#1b1b1b","#232323","#191919","#1d1d1d","#212121","#1f1f1f"];
+      for (let i = 0; i < 12; i++) {
+        const div = document.createElement("div");
+        div.className = "cell " + rhythm[i % rhythm.length];
+        div.style.background = placeholderBgs[i];
+        grid.appendChild(div);
+      }
+    } else {
+      photos.forEach((photo, i) => {
+        const div = document.createElement("div");
+        div.className = "cell " + rhythm[i % rhythm.length];
+        div.dataset.lightbox = photo.src;
+        const img = document.createElement("img");
+        img.src = photo.src;
+        img.alt = photo.alt || "";
+        img.loading = "lazy";
+        div.appendChild(img);
+        grid.appendChild(div);
+      });
+    }
+
+    // Footer
+    document.getElementById("footer-copy").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
+    const footerLinks = document.getElementById("footer-links");
+    CONFIG.info.elsewhere.forEach(link => {
+      if (!link.url) return;
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.target = "_blank";
+      a.textContent = link.label;
+      footerLinks.appendChild(a);
+    });
+    const contactA = document.createElement("a");
+    contactA.href = "info.html";
+    contactA.textContent = "Contact";
+    footerLinks.appendChild(contactA);
+  </script>
+</body>
+</html>
