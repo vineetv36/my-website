@@ -40,10 +40,17 @@
     const wrap = document.getElementById("info-wrap");
     const sections = [];
 
-    // About
+    // About — two-column layout with bio left, photo placeholder right
     sections.push({
       label: "About",
-      html: '<div class="info-body">' + CONFIG.info.bio.map(p => '<p>' + p + '</p>').join('') + '</div>'
+      html: '<div class="about-row">' +
+        '<div class="info-body">' + CONFIG.info.bio.map(p => '<p>' + p + '</p>').join('') + '</div>' +
+        '<div class="about-photo">' +
+          (CONFIG.info.portrait
+            ? '<img src="' + CONFIG.info.portrait + '" alt="' + CONFIG.name + '" loading="lazy">'
+            : '') +
+        '</div>' +
+      '</div>'
     });
 
     // Selected clients

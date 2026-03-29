@@ -36,6 +36,7 @@ const CONFIG = {
   ],
 
   info: {
+    portrait: "", // e.g. "public/images/portrait.jpg"
     bio: [
       "Your Name is a photographer and filmmaker based in [City].",
       "Available for editorial, commercial, and personal commissions worldwide.",
