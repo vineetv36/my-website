@@ -45,21 +45,20 @@
 
     // Photo grid
     const grid = document.getElementById("photo-grid");
-    const rhythm = CONFIG.overview.rhythm;
     const photos = CONFIG.overview.photos;
 
     if (photos.length === 0) {
       const placeholderBgs = ["#1a1a1a","#1e1e1e","#222222","#1c1c1c","#202020","#181818","#1b1b1b","#232323","#191919","#1d1d1d","#212121","#1f1f1f"];
       for (let i = 0; i < 12; i++) {
         const div = document.createElement("div");
-        div.className = "cell " + rhythm[i % rhythm.length];
+        div.className = "cell";
         div.style.background = placeholderBgs[i];
         grid.appendChild(div);
       }
     } else {
-      photos.forEach((photo, i) => {
+      photos.forEach((photo) => {
         const div = document.createElement("div");
-        div.className = "cell " + rhythm[i % rhythm.length];
+        div.className = "cell";
         div.dataset.lightbox = photo.src;
         const img = document.createElement("img");
         img.src = photo.src;
@@ -82,7 +81,7 @@
       footerLinks.appendChild(a);
     });
     const contactA = document.createElement("a");
-    contactA.href = "info.html";
+    contactA.href = "mailto:" + CONFIG.email;
     contactA.textContent = "Contact";
     footerLinks.appendChild(contactA);
   </script>

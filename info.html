@@ -56,7 +56,7 @@
     // About
     sections.push({
       label: "About",
-      html: '<div class="info-body">' + CONFIG.info.bio.map(p => '<p>' + p + '</p>').join('') + '</div>'
+      html: '<div class="info-body">' + CONFIG.info.bio.map((p, i) => i === 0 ? '<p><strong>' + p + '</strong></p>' : '<p>' + p + '</p>').join('') + '</div>'
     });
 
     // Selected clients
@@ -82,7 +82,7 @@
     // Contact
     sections.push({
       label: "Contact",
-      html: '<div class="info-body"><p><a class="info-link" href="mailto:' + CONFIG.email + '">' + CONFIG.email + '</a></p><p>Available for editorial, commercial, and personal commissions.</p></div>'
+      html: '<div class="info-body"><p><a class="info-link" href="mailto:' + CONFIG.email + '">' + CONFIG.email + '</a></p><p>Available for collaborations, commissions or even just a conversation</p></div>'
     });
 
     // Elsewhere
@@ -121,7 +121,7 @@
       footerLinks.appendChild(a);
     });
     const contactA = document.createElement("a");
-    contactA.href = "info.html";
+    contactA.href = "mailto:" + CONFIG.email;
     contactA.textContent = "Contact";
     footerLinks.appendChild(contactA);
   </script>
