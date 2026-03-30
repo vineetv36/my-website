@@ -49,7 +49,7 @@ const CONFIG = {
   info: {
     portrait: "public/images/portrait/portrait1.webp", // e.g. "public/images/portrait.webp"
     bio: [
-      "I'm a DC-based travel photographer chasing the extraordinary moments, forgetten details and everything in between.",
+      "I'm a DC based travel photographer chasing the extraordinary moments, forgetten details and everything in between.",
       "I started traveling back in 2017 and since then, I've been to 5 continents and over 20 countries. Throughout my travels, I've captured cityscape moments, grand vistas in nature and life through different cultures",
       "Now I'm embarking on a journey of sharing these memories to the world and I hope you can join me as I learn a thing or two about art, cinematogaphy and content creation."
     ],
