@@ -37,13 +37,27 @@ const CONFIG = {
   },
 
   videos: [
-    // {
-    //   title: "Olympic Peninsula — Spring 2025",
-    //   category: "Landscape",
-    //   runtime: "8:42",
-    //   thumbnail: "public/images/videos/olympic.webp",
-    //   url: "https://youtube.com/watch?v=...",
-    // },
+    {
+      title: "A Weekend in London | Osmo Pocket 4 & Fujifilm X100VI",
+      category: "Travel",
+      runtime: "3:20",
+      thumbnail: "https://i.ytimg.com/vi/E0v2010s7Qo/hq720.jpg",
+      url: "https://www.youtube.com/watch?v=E0v2010s7Qo",
+    },
+    {
+      title: "Summertime San Diego | Osmo Pocket 4 & Fujifilm X100VI",
+      category: "Travel",
+      runtime: "2:11",
+      thumbnail: "https://i.ytimg.com/vi/Ou2aEb-f8YM/hq720.jpg",
+      url: "https://www.youtube.com/watch?v=Ou2aEb-f8YM",
+    },
+    {
+      title: "A Slice of Japan | Cinematic Travel Film | Fujifilm X100VI",
+      category: "Travel",
+      runtime: "3:54",
+      thumbnail: "https://i.ytimg.com/vi/rz9JwXBtFHM/hq720.jpg",
+      url: "https://www.youtube.com/watch?v=rz9JwXBtFHM",
+    },
   ],
 
   info: {
@@ -62,7 +76,7 @@ const CONFIG = {
     ],
     elsewhere: [
       { label: "Instagram",  url: "https://instagram.com/yourhandle" },
-      { label: "YouTube",    url: "https://youtube.com/@viewsbyvineet" },
+      { label: "YouTube",    url: "https://www.youtube.com/@vineet.velmurugan" },
       // { label: "Newsletter", url: "" },
     ],
   },
