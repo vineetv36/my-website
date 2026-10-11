@@ -15,7 +15,7 @@ Edit `config.js`:
 - These light groups are an initial editorial selection based on appearance, not verified capture-time metadata. Reassign them to match your recollection of each shoot.
 - `videos`: actual YouTube watch URLs, thumbnail URLs, titles, locations, and runtimes. Thumbnails need access to YouTube's image host; the titled film links remain usable if images cannot load.
 
-The homepage uses `light.css` and `light.js`; the existing Travel, Videos, and About pages retain their shared `style.css` and `nav.js`. The redesigned homepage links Photography to its gallery, Films to its film section, and About to `info.html`. The film section also links to the full Videos page.
+The homepage uses `light.css` and `light.js`; About shares `light.css` and uses `about.js`; Travel and Videos retain their shared `style.css` and `nav.js`. The redesigned homepage links Photography to its gallery, Films to its film section, and About to `info.html`. The film section also links to the full Videos page.
 
 ## Local preview
 

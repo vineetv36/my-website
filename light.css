@@ -103,3 +103,32 @@ h2 { font: 400 clamp(30px, 3vw, 44px)/1.1 var(--serif); letter-spacing: -.035em;
  .viewer-stage img { max-height: calc(100svh - 230px); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.gold-text { color: var(--gold); font-style: normal; }
+.about-page { background: radial-gradient(ellipse at 85% 10%, #153746 0, transparent 55%), var(--bg); }
+.about-page .site-header { position: relative; }
+.site-nav a[aria-current=page] { color: var(--gold); text-decoration: underline; text-underline-offset: 7px; }
+.about-main { margin: 0 var(--gutter); }
+.about-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(40px, 7vw, 110px); align-items: start; padding: 70px 0 80px; }
+.eyebrow { font: 11px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .17em; text-transform: uppercase; color: var(--gold); margin: 0 0 28px; }
+.about-story h1 { font-size: clamp(68px, 7.5vw, 112px); }
+.about-bio { max-width: 55ch; margin: 38px 0 26px; color: var(--muted); font-size: 17px; line-height: 1.8; }
+.about-bio p:first-child { color: var(--text); font-size: 22px; line-height: 1.6; }
+.about-link { display: inline-block; color: var(--text); font-size: 17px; line-height: 1.8; border-bottom: 1px solid var(--gold); overflow-wrap: anywhere; }
+.about-link:hover { color: var(--gold); }
+.about-link span { margin-left: 18px; }
+.about-portrait { margin: 0; padding-top: 45px; }
+.about-portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.about-portrait figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 15px; color: var(--muted); font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
+.about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; border-top: 1px solid var(--line); padding: 40px 0 60px; }
+.about-details .eyebrow { margin-bottom: 18px; }
+.about-details p { color: var(--muted); font-size: 17px; line-height: 1.7; }
+.about-list { list-style: none; padding: 0; margin: 0; font-size: 20px; line-height: 1.9; }
+@media (max-width: 700px) {
+ .about-intro { grid-template-columns: 1fr; gap: 36px; padding: 45px 0; }
+ .about-story h1 { font-size: clamp(64px, 14vw, 92px); }
+ .about-bio { font-size: 16px; margin-top: 28px; }
+ .about-bio p:first-child { font-size: 20px; }
+ .about-portrait { padding-top: 0; }
+ .about-details { grid-template-columns: 1fr; gap: 32px; padding: 32px 0 45px; }
+}

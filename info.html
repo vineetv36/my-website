@@ -2,128 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Info</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#041720">
+  <meta name="description" content="Meet Vineet Velmurugan, a DC-based travel photographer and filmmaker chasing light around the world.">
+  <title>About — Vineet Velmurugan</title>
+  <link rel="stylesheet" href="light.css">
+  <script src="config.js" defer></script>
+  <script src="about.js" defer></script>
 </head>
-<body>
-  <nav>
-    <div class="nav-left">
-      <a class="site-name" href="index.html" id="nav-name"></a>
-      <div class="nav-icons" id="nav-icons"></div>
-    </div>
-    <div class="nav-links" id="nav-links"></div>
-    <div class="nav-hamburger"><span></span><span></span></div>
-  </nav>
-
-  <div class="info-layout">
-    <div class="info-content" id="info-content"></div>
-    <div class="info-photo" id="info-photo"></div>
-  </div>
-
-  <footer>
-    <span class="footer-copy" id="footer-copy"></span>
-    <div class="footer-links" id="footer-links"></div>
+<body class="about-page">
+  <a class="skip-link" href="#about">Skip to about</a>
+  <header class="site-header">
+    <a class="site-name" id="site-name" href="index.html"></a>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation"></nav>
+  </header>
+  <main id="about" class="about-main">
+    <section class="about-intro" aria-labelledby="about-title">
+      <div class="about-story">
+        <p class="eyebrow">About / The person behind the lens</p>
+        <h1 id="about-title"><span>Behind</span><span>the <em class="gold-text">frame.</em></span></h1>
+        <div class="about-bio" id="info-content"></div>
+        <a class="about-link" href="index.html#photography">Explore the photographs <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="about-portrait" id="info-photo">
+        <figcaption><span id="portrait-name"></span><span>Photographer & filmmaker</span></figcaption>
+      </figure>
+    </section>
+    <section class="about-details" aria-label="Gear and contact">
+      <div><h2 class="eyebrow">Along for the journey</h2><ul class="about-list" id="about-gear"></ul></div>
+      <div><h2 class="eyebrow">Let’s make something</h2><p>For collaborations, commissions, or just a conversation.</p><a class="about-link" id="about-email"></a></div>
+      <div id="about-clients" hidden><h2 class="eyebrow">Selected clients</h2><ul class="about-list" id="client-list"></ul></div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <a class="footer-name" id="footer-name" href="info.html"></a>
+    <div class="footer-details"><a id="contact-link">Contact</a><a id="youtube-link" target="_blank" rel="noopener noreferrer">YouTube</a><span id="copyright"></span></div>
   </footer>
-
-  <script src="config.js"></script>
-  <script src="nav.js"></script>
-  <script>
-    // Nav
-    document.getElementById("nav-name").textContent = CONFIG.name;
-    const navLinks = document.getElementById("nav-links");
-    CONFIG.nav.links.forEach(l => {
-      const a = document.createElement("a");
-      a.href = l.href;
-      a.textContent = l.label;
-      navLinks.appendChild(a);
-    });
-
-    // Photo
-    const photoWrap = document.getElementById("info-photo");
-    if (CONFIG.info.portrait) {
-      const img = document.createElement("img");
-      img.src = CONFIG.info.portrait;
-      img.alt = CONFIG.name;
-      img.loading = "lazy";
-      photoWrap.appendChild(img);
-    }
-
-    // Info sections
-    const wrap = document.getElementById("info-content");
-    const sections = [];
-
-    // About
-    sections.push({
-      label: "About",
-      html: '<div class="info-body">' + CONFIG.info.bio.map((p, i) => i === 0 ? '<p><strong>' + p + '</strong></p>' : '<p>' + p + '</p>').join('') + '</div>'
-    });
-
-    // Selected clients
-    if (CONFIG.info.clients.length > 0) {
-      sections.push({
-        label: "Selected clients",
-        html: '<ul class="info-list">' + CONFIG.info.clients.map(c =>
-          '<li>' + c.name + '<span>' + c.years + '</span></li>'
-        ).join('') + '</ul>'
-      });
-    }
-
-    // Gear
-    if (CONFIG.info.gear.length > 0) {
-      sections.push({
-        label: "Gear",
-        html: '<ul class="info-list">' + CONFIG.info.gear.map(g =>
-          '<li>' + g + '</li>'
-        ).join('') + '</ul>'
-      });
-    }
-
-    // Contact
-    sections.push({
-      label: "Contact",
-      html: '<div class="info-body"><p><a class="info-link" href="mailto:' + CONFIG.email + '">' + CONFIG.email + '</a></p><p>Available for collaborations, commissions or even just a conversation</p></div>'
-    });
-
-    // Elsewhere
-    if (CONFIG.info.elsewhere.length > 0) {
-      sections.push({
-        label: "Elsewhere",
-        html: '<ul class="info-list">' + CONFIG.info.elsewhere.map(l =>
-          '<li><a class="info-link" href="' + (l.url || '#') + '" target="_blank">' + l.label + '</a></li>'
-        ).join('') + '</ul>'
-      });
-    }
-
-    sections.forEach((s, i) => {
-      const section = document.createElement("div");
-      section.className = "info-section";
-      section.innerHTML = '<div class="info-label">' + s.label + '</div>' + s.html;
-      wrap.appendChild(section);
-
-      // Add divider after every section except the last
-      if (i < sections.length - 1) {
-        const divider = document.createElement("div");
-        divider.className = "info-divider";
-        wrap.appendChild(divider);
-      }
-    });
-
-    // Footer
-    document.getElementById("footer-copy").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
-    const footerLinks = document.getElementById("footer-links");
-    CONFIG.info.elsewhere.forEach(link => {
-      if (!link.url) return;
-      const a = document.createElement("a");
-      a.href = link.url;
-      a.target = "_blank";
-      a.textContent = link.label;
-      footerLinks.appendChild(a);
-    });
-    const contactA = document.createElement("a");
-    contactA.href = "mailto:" + CONFIG.email;
-    contactA.textContent = "Contact";
-    footerLinks.appendChild(contactA);
-  </script>
+  <noscript><p class="noscript">Enable JavaScript to read the biography. <a href="mailto:vineetv4j@gmail.com">Contact Vineet</a>.</p></noscript>
 </body>
 </html>

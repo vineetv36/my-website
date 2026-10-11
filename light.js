@@ -29,7 +29,15 @@
   $('hero-image').alt = page.hero.alt;
   page.title.forEach(line => {
     const span = document.createElement('span');
-    span.textContent = line;
+    const parts = line.split(/(light\.?)/i);
+    parts.forEach(part => {
+      if (/^light\.?$/i.test(part)) {
+        const accent = document.createElement('em');
+        accent.className = 'gold-text';
+        accent.textContent = part;
+        span.append(accent);
+      } else span.append(document.createTextNode(part));
+    });
     $('hero-title').append(span);
   });
   setText('hero-subtitle', page.subtitle);

@@ -26,7 +26,7 @@ const CONFIG = {
       { src: "public/images/portugal/portugal3.webp", alt: "A glowing lantern beneath a colorful stained-glass ceiling", location: "Portugal", light: "daylight", width: 1600, height: 2400 },
       { src: "public/images/zionnps/zionnps1.webp", alt: "Low sunlight across the cliffs and valley of Zion", location: "Zion, Utah", light: "golden-hour", width: 1600, height: 2400 },
       { src: "public/images/zionnps/zionnps2.webp", alt: "The Milky Way stretching above a silhouetted stargazer", location: "Zion, Utah", light: "night", width: 1600, height: 2133 },
-      { src: "public/images/zionnps/zionnps3.webp", alt: "A winding road beneath sunlit canyon walls", location: "Zion, Utah", light: "daylight", width: 1600, height: 2133 },
+      { src: "public/images/zionnps/zionnps3.webp", alt: "A winding road beneath sunlit canyon walls", location: "Zion, Utah", light: "first-light", width: 1600, height: 2133 },
     ],
   },
 
@@ -91,9 +91,9 @@ const CONFIG = {
   info: {
     portrait: "public/images/portrait/portrait1.webp", // e.g. "public/images/portrait.webp"
     bio: [
-      "I'm a DC based travel photographer chasing the extraordinary moments, forgetten details and everything in between.",
+      "I'm a DC-based travel photographer chasing the extraordinary moments, forgotten details and everything in between.",
       "I started traveling back in 2017 and since then, I've been to 5 continents and over 20 countries. Throughout my travels, I've captured cityscape moments, grand vistas in nature and life through different cultures",
-      "Now I'm embarking on a journey of sharing these memories to the world and I hope you can join me as I learn a thing or two about art, cinematogaphy and content creation."
+      "Now I'm embarking on a journey of sharing these memories to the world and I hope you can join me as I learn a thing or two about art, cinematography and content creation."
     ],
     clients: [
       // { name: "Patagonia", years: "2022 — present" },
