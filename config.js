@@ -17,7 +17,7 @@ const CONFIG = {
     photos: [
       { src: "public/images/iceland/iceland1.webp", alt: "Waves breaking against basalt cliffs on a black-sand beach", location: "Iceland", light: "daylight", width: 1600, height: 2400 },
       { src: "public/images/iceland/iceland2.webp", alt: "Sunlight catching the falling water and mist of a waterfall", location: "Iceland", light: "golden-hour", width: 1600, height: 2400 },
-      { src: "public/images/norway/norway1.webp", alt: "Soft light over snow-covered mountains and a quiet fjord", location: "Norway", light: "first-light", width: 1600, height: 1066 },
+      {"src": "public/images/norway/DSCF1003.webp", "alt": "Pale warm clouds above snowy mountains and an icy shoreline", "location": "Norway", "light": "first-light", "width": 1600, "height": 1066},
       { src: "public/images/norway/norway2.webp", alt: "Snow-covered mountains across a dark fjord at blue hour", location: "Norway", light: "blue-hour", width: 1600, height: 1066 },
       { src: "public/images/norway/norway3.webp", alt: "Green northern lights above a snowy valley", location: "Norway", light: "night", width: 1600, height: 1068 },
       { src: "public/images/portugal/portugal1.webp", alt: "Warm light on Porto Cathedral framed by a narrow street", location: "Portugal", light: "golden-hour", width: 1600, height: 2400 },
@@ -39,7 +39,7 @@ const CONFIG = {
       {"src": "public/images/korea/DSCF1552.webp", "alt": "A pink sunset above a city skyline and distant hills", "location": "Korea", "light": "golden-hour", "width": 1600, "height": 1066},
       {"src": "public/images/korea/DSCF1567.webp", "alt": "Colorful illuminated lanterns hanging over patterned lantern figures", "location": "Korea", "light": "night", "width": 1600, "height": 2400},
       {"src": "public/images/korea/DSCF1575.webp", "alt": "Illuminated high-rises beside a city stream at night", "location": "Korea", "light": "night", "width": 1600, "height": 2400},
-      {"src": "public/images/norway/DSCF1003.webp", "alt": "Pale warm clouds above snowy mountains and an icy shoreline", "location": "Norway", "light": "blue-hour", "width": 1600, "height": 1066},
+      { src: "public/images/norway/norway1.webp", alt: "Soft light over snow-covered mountains and a quiet fjord", location: "Norway", light: "blue-hour", width: 1600, height: 1066 },
       {"src": "public/images/norway/DSCF1049.webp", "alt": "City lights outlining a harbor and bridge after dark", "location": "Norway", "light": "night", "width": 1600, "height": 1066},
       {"src": "public/images/sandiego/DSCF1756.webp", "alt": "Warm sunlight through an arch overlooking a domed conservatory", "location": "San Diego", "light": "golden-hour", "width": 1600, "height": 2400},
       {"src": "public/images/sandiego/DSCF1784.webp", "alt": "Waves breaking below coastal cliffs under a blue sky", "location": "San Diego", "light": "daylight", "width": 1600, "height": 2400},
