@@ -10,8 +10,8 @@ After merging the redesign branch, select **Settings → Pages → Deploy from a
 
 Edit `config.js`:
 
-- `light`: hero image, headline, navigation, and the four time-of-day labels. `defaultPeriod` selects the opening gallery.
-- `overview.photos`: each photo has a relative `src`, descriptive `alt`, `location`, actual `width` and `height`, and a `light` value of `first-light`, `daylight`, `golden-hour`, or `blue-hour`.
+- `light`: hero image, headline, navigation, and the five time-of-day labels. `defaultPeriod` selects the opening gallery.
+- `overview.photos`: each photo has a relative `src`, descriptive `alt`, `location`, actual `width` and `height`, and a `light` value of `blue-hour`, `first-light`, `daylight`, `golden-hour`, or `night`.
 - These light groups are an initial editorial selection based on appearance, not verified capture-time metadata. Reassign them to match your recollection of each shoot.
 - `videos`: actual YouTube watch URLs, thumbnail URLs, titles, locations, and runtimes. Thumbnails need access to YouTube's image host; the titled film links remain usable if images cannot load.
 

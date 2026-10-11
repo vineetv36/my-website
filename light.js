@@ -5,6 +5,7 @@
   const setText = (id, text) => { $(id).textContent = text; };
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const icons = {
+    twilight: '<path d="M3 24h34M8 28h24M11 21a9 9 0 0 1 18 0M20 3v4M18 5h4M5 12v4M3 14h4M35 10v4M33 12h4"/>',
     sunrise: '<path d="M3 24h34M8 28h24M11 21a9 9 0 0 1 18 0M20 3v5M5 10l4 4M35 10l-4 4M3 19h4M33 19h4"/>',
     sun: '<circle cx="20" cy="16" r="7"/><path d="M20 1v4M20 27v4M5 16H1M39 16h-4M9 5l3 3M28 24l3 3M31 5l-3 3M12 24l-3 3"/>',
     sunset: '<path d="M3 24h34M8 28h24M11 21a9 9 0 0 1 18 0M20 3v5M5 10l4 4M35 10l-4 4M3 19h4M33 19h4M17 5l3 3 3-3"/>',
