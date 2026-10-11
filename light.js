@@ -111,7 +111,7 @@
   }
   function selectPeriod(period) {
     photos = CONFIG.overview.photos.filter(photo => photo.light === period.id);
-    updateHero(photos[0] || page.hero);
+    updateHero(photos.find(photo => photo.src === period.backdrop) || photos[0] || page.hero);
     [...tabs.children].forEach(button => {
       const selected = button.dataset.period === period.id;
       button.setAttribute('aria-selected', String(selected));

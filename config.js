@@ -16,7 +16,7 @@ const CONFIG = {
   overview: {
     photos: [
       { src: "public/images/iceland/iceland1.webp", alt: "Waves breaking against basalt cliffs on a black-sand beach", location: "Iceland", light: "daylight", width: 1600, height: 2400 },
-      { src: "public/images/iceland/iceland2.webp", alt: "Sunlight catching the falling water and mist of a waterfall", location: "Iceland", light: "golden-hour", width: 1600, height: 2400 },
+      { src: "public/images/iceland/iceland2.webp", alt: "Sunlight catching the falling water and mist of a waterfall", location: "Iceland", light: "daylight", width: 1600, height: 2400 },
       {"src": "public/images/norway/DSCF1003.webp", "alt": "Pale warm clouds above snowy mountains and an icy shoreline", "location": "Norway", "light": "first-light", "width": 1600, "height": 1066},
       { src: "public/images/norway/norway2.webp", alt: "Snow-covered mountains across a dark fjord at blue hour", location: "Norway", light: "blue-hour", width: 1600, height: 1066 },
       { src: "public/images/norway/norway3.webp", alt: "Green northern lights above a snowy valley", location: "Norway", light: "night", width: 1600, height: 1068 },
@@ -63,9 +63,9 @@ const CONFIG = {
     ],
     periods: [
       { id: "blue-hour", label: "Blue hour", icon: "twilight" },
-      { id: "first-light", label: "First light", icon: "sunrise" },
-      { id: "daylight", label: "Daylight", icon: "sun" },
-      { id: "golden-hour", label: "Golden hour", icon: "sunset" },
+      { id: "first-light", label: "First light", icon: "sunrise", backdrop: "public/images/japan/DSCF1336.webp" },
+      { id: "daylight", label: "Daylight", icon: "sun", backdrop: "public/images/iceland/iceland2.webp" },
+      { id: "golden-hour", label: "Golden hour", icon: "sunset", backdrop: "public/images/korea/DSCF1552.webp" },
       { id: "night", label: "Night", icon: "moon" },
     ],
     filmsTitle: "Stories in motion",
