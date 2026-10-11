@@ -15,9 +15,9 @@
   }
   setText('site-name', CONFIG.name);
   setText('footer-name', CONFIG.name);
-  setText('footer-tagline', page.footer);
   setText('copyright', `© ${new Date().getFullYear()}`);
   $('contact-link').href = `mailto:${CONFIG.email}`;
+  $('youtube-link').href = CONFIG.info.elsewhere.find(link => link.label === 'YouTube').url;
   page.navigation.forEach(item => {
     const link = document.createElement('a');
     link.href = item.href;
@@ -43,6 +43,36 @@
   let viewerIndex = 0;
   let priorOverflow = '';
   let scrollFrame = 0;
+  let heroRequest = 0;
+  let heroTransition = Promise.resolve();
+
+  async function updateHero(photo) {
+    const request = ++heroRequest;
+    const image = new Image();
+    image.src = photo.src;
+    image.alt = photo.alt;
+    image.className = 'hero-image';
+    // Decode before revealing the next photograph; a failed load keeps the current one.
+    try { await image.decode(); } catch { return; }
+    // Finish the current fade before starting another, and discard outdated selections.
+    await heroTransition;
+    if (request !== heroRequest) return;
+    const previous = $('hero-image');
+    if (previous.src === image.src) return;
+    image.setAttribute('aria-hidden', 'true');
+    previous.after(image);
+    const animation = image.animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: reducedMotion.matches ? 0 : 850,
+      easing: 'ease-in-out',
+      fill: 'forwards',
+    });
+    heroTransition = animation.finished.then(() => {
+      previous.remove();
+      image.id = 'hero-image';
+      image.removeAttribute('aria-hidden');
+      animation.cancel();
+    });
+  }
 
   function leadingIndex() {
     const cards = [...track.children];
@@ -72,6 +102,7 @@
   }
   function selectPeriod(period) {
     photos = CONFIG.overview.photos.filter(photo => photo.light === period.id);
+    updateHero(photos[0] || page.hero);
     [...tabs.children].forEach(button => {
       const selected = button.dataset.period === period.id;
       button.setAttribute('aria-selected', String(selected));

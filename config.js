@@ -51,7 +51,6 @@ const CONFIG = {
     ],
     filmsTitle: "Stories in motion",
     filmsLink: "Short films from the road.",
-    footer: "Photographs & films",
     emptyGallery: "More photographs to come. Explore another light.",
   },
 

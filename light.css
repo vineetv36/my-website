@@ -31,14 +31,14 @@ h1 span { display: block; }
 .light-tab[aria-selected=true] { color: var(--text); }
 .light-tab[aria-selected=true]:after { content: ''; position: absolute; bottom: 3px; width: 68%; height: 2px; background: var(--text); }
 .light-tab[aria-selected=true] svg { color: var(--text); }
-.gallery-section { padding-top: 20px; }
-.gallery-track { --photo-height: clamp(270px, 29vw, 420px); display: flex; align-items: start; gap: 18px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 24px; padding: 0 24px 13px; scrollbar-width: thin; scrollbar-color: #536b75 transparent; }
+.gallery-section { margin: 0 var(--gutter); padding-top: 20px; }
+.gallery-track { --photo-height: clamp(270px, 29vw, 420px); display: flex; align-items: start; gap: 18px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding: 0 0 13px; scrollbar-width: thin; scrollbar-color: #536b75 transparent; }
 .photo-card { flex: 0 0 auto; width: calc(var(--photo-height) * var(--ratio)); max-width: 85vw; margin: 0; scroll-snap-align: start; }
 .photo-button { display: block; width: 100%; padding: 0; background: #102a34; border: 0; text-align: left; }
 .photo-button img { width: 100%; height: var(--photo-height); display: block; object-fit: cover; }
 .photo-button:hover { opacity: .9; }
 .photo-card figcaption { padding: 10px 2px 0; font-size: 17px; }
-.gallery-controls { display: flex; justify-content: flex-end; align-items: center; gap: 14px; margin: 9px 28px 30px; min-height: 46px; }
+.gallery-controls { display: flex; justify-content: flex-end; align-items: center; gap: 14px; margin: 9px 0 30px; min-height: 46px; }
 .gallery-counter, #viewer-counter { font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; margin-right: 8px; }
 .round-button { background: transparent; border: 1px solid #c4ccce; width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font: 23px Georgia, serif; flex-shrink: 0; }
 .round-button:hover:not(:disabled) { background: #ffffff12; }
@@ -62,7 +62,6 @@ h2 { font: 400 clamp(30px, 3vw, 44px)/1.1 var(--serif); letter-spacing: -.035em;
 .site-footer { display: flex; justify-content: space-between; gap: 25px; margin: 0 var(--gutter); padding: 27px 0 40px; border-top: 1px solid var(--line); }
 .footer-name { font-size: 25px; letter-spacing: -.04em; }
 .footer-details { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 20px; font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); }
-.footer-details p { margin: 0; letter-spacing: .14em; text-transform: uppercase; }
 .footer-details a { border-bottom: 1px solid var(--line); }
 .photo-viewer { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border: 0; padding: 65px max(22px, 5vw) 24px; background: #020d13f7; color: var(--text); }
 .photo-viewer[open] { display: flex; flex-direction: column; }
@@ -89,9 +88,9 @@ h2 { font: 400 clamp(30px, 3vw, 44px)/1.1 var(--serif); letter-spacing: -.035em;
  .light-tab svg { width: 29px; height: 28px; }
  .light-tab span { font-size: 9px; letter-spacing: .09em; max-width: 11ch; }
  .light-tab[aria-selected=true]:after { width: 80%; }
- .gallery-track { --photo-height: 290px; gap: 12px; padding-inline: 18px; scroll-padding-inline: 18px; }
+ .gallery-track { --photo-height: 290px; gap: 12px; }
  .photo-card { max-width: 82vw; }
- .gallery-controls { margin: 12px 20px 24px; }
+ .gallery-controls { margin: 12px 0 24px; }
  .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
  .film-grid { grid-template-columns: 1fr; gap: 26px; }
  .film-poster { aspect-ratio: 16/9; }
