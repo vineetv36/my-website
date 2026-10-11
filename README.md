@@ -1,0 +1,32 @@
+# Chasing the Light
+
+A static photography portfolio: plain HTML, CSS, and JavaScript. No framework, package install, build step, API key, or server-side code is required.
+
+## GitHub Pages
+
+After merging the redesign branch, select **Settings → Pages → Deploy from a branch**, choose `main` and `/ (root)`. The existing `CNAME` remains unchanged. Asset and page links are relative, so the site works at both a custom domain and a project URL such as `https://username.github.io/my-website/`. `.nojekyll` keeps the site buildless.
+
+## Content
+
+Edit `config.js`:
+
+- `light`: hero image, headline, navigation, and the four time-of-day labels. `defaultPeriod` selects the opening gallery.
+- `overview.photos`: each photo has a relative `src`, descriptive `alt`, `location`, actual `width` and `height`, and a `light` value of `first-light`, `daylight`, `golden-hour`, or `blue-hour`.
+- These light groups are an initial editorial selection based on appearance, not verified capture-time metadata. Reassign them to match your recollection of each shoot.
+- `videos`: actual YouTube watch URLs, thumbnail URLs, titles, locations, and runtimes. Thumbnails need access to YouTube's image host; the titled film links remain usable if images cannot load.
+
+The homepage uses `light.css` and `light.js`; the existing Travel, Videos, and About pages retain their shared `style.css` and `nav.js`. The redesigned homepage links Photography to its gallery, Films to its film section, and About to `info.html`. The film section also links to the full Videos page.
+
+## Local preview
+
+From the repository root:
+
+```sh
+python3 -m http.server 8000
+```
+
+Open `http://localhost:8000`. This is only a local preview server; GitHub Pages serves the files directly.
+
+## Controls
+
+Select a light category to replace the single horizontal gallery. Scroll or swipe the strip, or use its previous/next buttons. The category buttons support Left/Right, Home, and End keys. Select a photograph for the modal viewer; use Left/Right to browse and Escape to close. Reduced-motion preferences are respected.

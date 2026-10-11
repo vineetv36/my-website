@@ -11,23 +11,48 @@ const CONFIG = {
     ]
   },
 
+  // Light categories are editorial groupings, not verified capture times.
+  // Change a photo's `light` to move it between galleries.
   overview: {
     photos: [
-      { src: "public/images/iceland/iceland1.webp", alt: "iceland" },
-      { src: "public/images/iceland/iceland2.webp", alt: "iceland" },
-      { src: "public/images/iceland/iceland3.webp", alt: "iceland" },
-      { src: "public/images/norway/norway1.webp", alt: "Norway" },
-      { src: "public/images/norway/norway2.webp", alt: "Norway" },
-      { src: "public/images/norway/norway3.webp", alt: "Norway" },
-      { src: "public/images/portugal/portugal1.webp", alt: "Portugal" },
-      { src: "public/images/portugal/portugal2.webp", alt: "Portugal" },
-      { src: "public/images/portugal/portugal3.webp", alt: "Portugal" },
-      { src: "public/images/zionnps/zionnps1.webp", alt: "Zion National Park" },
-      { src: "public/images/zionnps/zionnps2.webp", alt: "Zion National Park" },
-      { src: "public/images/zionnps/zionnps3.webp", alt: "Zion National Park" },
+      { src: "public/images/iceland/iceland1.webp", alt: "Waves breaking against basalt cliffs on a black-sand beach", location: "Iceland", light: "daylight", width: 1600, height: 2400 },
+      { src: "public/images/iceland/iceland2.webp", alt: "Sunlight catching the falling water and mist of a waterfall", location: "Iceland", light: "golden-hour", width: 1600, height: 2400 },
+      { src: "public/images/iceland/iceland3.webp", alt: "A waterfall flowing through a snow-covered landscape", location: "Iceland", light: "first-light", width: 1600, height: 1066 },
+      { src: "public/images/norway/norway1.webp", alt: "Soft light over snow-covered mountains and a quiet fjord", location: "Norway", light: "first-light", width: 1600, height: 1066 },
+      { src: "public/images/norway/norway2.webp", alt: "Snow-covered mountains across a dark fjord at blue hour", location: "Norway", light: "blue-hour", width: 1600, height: 1066 },
+      { src: "public/images/norway/norway3.webp", alt: "Green northern lights above a snowy valley", location: "Norway", light: "blue-hour", width: 1600, height: 1068 },
+      { src: "public/images/portugal/portugal1.webp", alt: "Warm light on Porto Cathedral framed by a narrow street", location: "Portugal", light: "golden-hour", width: 1600, height: 2400 },
+      { src: "public/images/portugal/portugal2.webp", alt: "A yellow palace tower above stone walls", location: "Portugal", light: "daylight", width: 1600, height: 2400 },
+      { src: "public/images/portugal/portugal3.webp", alt: "A glowing lantern beneath a colorful stained-glass ceiling", location: "Portugal", light: "daylight", width: 1600, height: 2400 },
+      { src: "public/images/zionnps/zionnps1.webp", alt: "Low sunlight across the cliffs and valley of Zion", location: "Zion, Utah", light: "golden-hour", width: 1600, height: 2400 },
+      { src: "public/images/zionnps/zionnps2.webp", alt: "The Milky Way stretching above a silhouetted stargazer", location: "Zion, Utah", light: "blue-hour", width: 1600, height: 2133 },
+      { src: "public/images/zionnps/zionnps3.webp", alt: "A winding road beneath sunlit canyon walls", location: "Zion, Utah", light: "daylight", width: 1600, height: 2133 },
     ],
-    // Cycles through as photos are placed. sq = square, tall = portrait 2 rows, wide = landscape 2 cols
-    rhythm: ["tall", "sq", "sq", "sq", "sq", "wide", "sq", "tall", "sq", "sq", "sq", "sq"],
+  },
+
+  light: {
+    title: ["Chasing", "the light."],
+    subtitle: "A day around the world, told in photographs.",
+    hero: {
+      src: "public/images/norway/norway2.webp",
+      alt: "Snow-covered Norwegian mountains across a fjord at blue hour",
+    },
+    defaultPeriod: "blue-hour",
+    navigation: [
+      { label: "Photography", href: "#photography" },
+      { label: "Films", href: "#films" },
+      { label: "About", href: "info.html" },
+    ],
+    periods: [
+      { id: "first-light", label: "First light", icon: "sunrise" },
+      { id: "daylight", label: "Daylight", icon: "sun" },
+      { id: "golden-hour", label: "Golden hour", icon: "sunset" },
+      { id: "blue-hour", label: "Blue hour & night", icon: "moon" },
+    ],
+    filmsTitle: "Stories in motion",
+    filmsLink: "Short films from the road.",
+    footer: "Photographs & films",
+    emptyGallery: "More photographs to come. Explore another light.",
   },
 
   travel: {
@@ -38,6 +63,7 @@ const CONFIG = {
 
   videos: [
     {
+      location: "London",
       title: "A Weekend in London | Osmo Pocket 4 & Fujifilm X100VI",
       category: "Travel",
       runtime: "3:20",
@@ -45,6 +71,7 @@ const CONFIG = {
       url: "https://www.youtube.com/watch?v=E0v2010s7Qo",
     },
     {
+      location: "San Diego",
       title: "Summertime San Diego | Osmo Pocket 4 & Fujifilm X100VI",
       category: "Travel",
       runtime: "2:11",
@@ -52,6 +79,7 @@ const CONFIG = {
       url: "https://www.youtube.com/watch?v=Ou2aEb-f8YM",
     },
     {
+      location: "Japan",
       title: "A Slice of Japan | Cinematic Travel Film | Fujifilm X100VI",
       category: "Travel",
       runtime: "3:54",
