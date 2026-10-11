@@ -8,7 +8,7 @@
   $('youtube-link').href = CONFIG.info.elsewhere.find(link => link.label === 'YouTube').url;
   CONFIG.light.navigation.forEach(item => {
     const link = document.createElement('a');
-    link.href = item.href.startsWith('#') ? `index.html${item.href}` : item.href;
+    link.href = item.href === '#films' ? 'videos.html' : item.href.startsWith('#') ? `index.html${item.href}` : item.href;
     link.textContent = item.label;
     if (item.href === 'info.html') link.setAttribute('aria-current', 'page');
     $('site-nav').append(link);
