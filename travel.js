@@ -53,7 +53,6 @@
     const [x1, y1] = project(start.coordinates);
     const [x2, y2] = project(end.coordinates);
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.dataset.region = regionFor(start);
     path.setAttribute('d', `M ${x1} ${y1} Q ${(x1 + x2) / 2 - (y2 - y1) * .2} ${(y1 + y2) / 2 + (x2 - x1) * .2} ${x2} ${y2}`);
     $('map-connections').append(path);
   });
@@ -69,13 +68,7 @@
     const targetX = viewport.clientWidth * (desktop ? .58 : .5);
     const targetY = viewport.clientHeight * (desktop ? .22 : .45);
     canvas.style.transform = `translate(${targetX - x * scale}px, ${targetY - y * scale}px)`;
-    destinations.forEach(destination => {
-      const marker = document.querySelector(`.map-marker[data-destination="${destination.id}"]`);
-      if (marker) marker.hidden = regionFor(destination) !== region;
-    });
-    document.querySelectorAll('#map-connections path').forEach(path => {
-      path.style.display = path.dataset.region === region ? '' : 'none';
-    });
+
   }
   window.addEventListener('resize', centerMap);
   destinations.forEach((destination, index) => {
@@ -131,10 +124,7 @@
     document.querySelectorAll('[data-destination]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.destination === destination.id));
     });
-    const index = String(destinations.indexOf(destination) + 1).padStart(2, '0');
-    setText('preview-region', `Selected collection / ${index}`);
     setText('preview-title', destination.name);
-    setText('preview-description', destination.description);
     const cover = photos.find(photo => photo.src === destination.folder + destination.cover) || photos[0];
     $('preview-image').hidden = !cover;
     if (cover) {
@@ -162,13 +152,43 @@
       image.loading = 'lazy';
       image.decoding = 'async';
       const caption = document.createElement('span');
-      caption.textContent = `${String(index + 1).padStart(2, '0')} / ${destination.name}`;
+      caption.textContent = destination.name;
       button.append(image, caption);
       $('travel-grid').append(button);
     });
     $('empty-destination').hidden = photos.length + films.length > 0;
     if (updateHash) history.replaceState(null, '', `#${destination.id}`);
   }
+  const routeDialog = $('route-viewer');
+  const routeLines = $('map-connections').cloneNode(true);
+  routeLines.removeAttribute('id');
+  $('route-canvas').append(routeLines);
+  document.querySelectorAll('#map-markers .map-marker').forEach(marker => {
+    const copy = marker.cloneNode(true);
+    copy.setAttribute('aria-label', `Open ${destinations.find(item => item.id === copy.dataset.destination).name} collection`);
+    copy.addEventListener('click', () => {
+      selectDestination(destinations.find(item => item.id === copy.dataset.destination));
+      routeDialog.close();
+      $('view-destination').focus({ preventScroll: true });
+    });
+    $('route-canvas').append(copy);
+  });
+  let routeOverflow = '';
+  $('view-route').addEventListener('click', () => {
+    routeOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    routeDialog.showModal();
+    $('route-close').focus();
+    if (!reducedMotion.matches) {
+      routeLines.querySelectorAll('path').forEach(path => path.animate(
+        [{ strokeDashoffset: 36 }, { strokeDashoffset: 0 }], { duration: 1800, easing: 'ease-out' }
+      ));
+    }
+  });
+  $('route-close').addEventListener('click', () => routeDialog.close());
+  routeDialog.addEventListener('click', event => { if (event.target === routeDialog) routeDialog.close(); });
+  routeDialog.addEventListener('close', () => { document.body.style.overflow = routeOverflow; });
+
   function selectFromHash() {
     const id = location.hash.slice(1);
     const destination = destinations.find(item => item.id === id);
@@ -190,7 +210,7 @@
     const photo = photos[viewerIndex];
     $('viewer-image').src = photo.src;
     $('viewer-image').alt = photo.alt;
-    setText('viewer-caption', `${photo.location} — ${photo.alt}`);
+    setText('viewer-caption', photo.location);
     setText('viewer-counter', `${viewerIndex + 1} / ${photos.length}`);
     $('viewer-prev').disabled = $('viewer-next').disabled = photos.length < 2;
   }

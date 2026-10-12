@@ -1,3 +1,4 @@
+@font-face { font-family: "Caveat"; src: url("public/fonts/Caveat.ttf") format("truetype"); font-weight: 400 700; font-style: normal; font-display: swap; }
 .travel-page { background: var(--bg); }
 .travel-page .site-header { position: relative; }
 .atlas-main { margin: 0; }
@@ -27,10 +28,8 @@
 .destination-index button[aria-pressed=true] > span:first-child { color: #a2662a; }
 .destination-index button:hover { color: #a2662a; }
 .destination-preview { position: absolute; z-index: 3; right: var(--gutter); bottom: 78px; width: clamp(270px, 24vw, 370px); padding: 14px 14px 24px; background: #fffdf2; box-shadow: 0 15px 50px #283e3626; transform: rotate(2deg); }
-.preview-region { position: absolute; top: -36px; left: 0; width: 100%; text-align: center; color: #6e7e69; font: 9px ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .16em; text-transform: uppercase; }
 #preview-image { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #d7dec5; }
-.destination-preview h2 { font-size: 39px; margin: 22px 7px 10px; }
-.preview-description { font-size: 15px; line-height: 1.65; color: var(--atlas-muted); margin: 0 7px 20px; }
+.destination-preview h2 { font: 500 52px/1.15 "Caveat", cursive; letter-spacing: 0; margin: 17px 7px 20px; transform: rotate(-2deg); }
 .atlas-open { display: flex; align-items: center; justify-content: space-between; width: calc(100% - 14px); margin: 0 7px; border: 0; padding: 0; background: transparent; text-align: left; color: var(--atlas-ink); font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
 .atlas-open:hover { color: #a2662a; }
 .atlas-open span { font-size: 17px; }
@@ -43,7 +42,7 @@
 .atlas-photo-grid { columns: 3; column-gap: 22px; }
 .atlas-photo { display: block; width: 100%; break-inside: avoid; border: 0; padding: 0; margin: 0 0 25px; background: transparent; text-align: left; }
 .atlas-photo img { display: block; width: 100%; height: auto; background: #193640; }
-.atlas-photo span { display: block; margin-top: 10px; color: var(--muted); font: 9px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+.atlas-photo span { display: block; margin-top: 10px; color: var(--muted); font: 500 28px/1.2 "Caveat", cursive; }
 .atlas-photo:hover img { opacity: .88; }
 @media (min-width: 1700px) { .atlas-story { width: 370px; } .atlas-stage { min-height: 1000px; } }
 @media (max-width: 1100px) and (min-width: 901px) {
@@ -67,8 +66,7 @@
  .map-canvas { width: 1900px; }
  .destination-preview { position: relative; right: auto; bottom: auto; width: min(400px, 80%); align-self: flex-end; margin: -50px max(28px, 6vw) 35px 0; padding: 12px 12px 23px; transform: rotate(1.5deg); }
  #preview-image { aspect-ratio: 4 / 3; }
- .destination-preview h2 { font-size: 35px; }
- .preview-region { display: none; }
+ .destination-preview h2 { font-size: 46px; }
  .atlas-photo-grid { columns: 2; }
 }
 @media (max-width: 430px) {
@@ -82,7 +80,23 @@
 }
 
 .map-connections { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.map-connections path { fill: none; stroke: #a36d24; stroke-opacity: .65; stroke-width: 1.25; stroke-dasharray: 4 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.map-connections path { fill: none; stroke: #b45f39; stroke-opacity: .85; stroke-width: 1.8; stroke-dasharray: 3 6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .atlas-photo-grid .film-card { display: inline-block; width: 100%; break-inside: avoid; margin-bottom: 25px; }
 .atlas-photo-grid .film-poster { aspect-ratio: 4 / 3; }
 .atlas-photo-grid .film-meta { font-size: 11px; }
+
+.destination-preview:before { content: ''; position: absolute; z-index: 1; width: 90px; height: 25px; top: -12px; left: calc(50% - 45px); background: #d3bc886b; border-inline: 1px solid #c2ad7640; transform: rotate(-7deg); pointer-events: none; }
+.route-open { margin: 20px 0 0; padding: 5px 0; border: 0; border-bottom: 1px dashed #a2662a; background: transparent; color: #875625; font: 500 26px/1.2 "Caveat", cursive; }
+.route-open svg { margin-left: 10px; vertical-align: middle; }
+.route-viewer { width: min(1200px, 94vw); max-width: 94vw; max-height: 90svh; padding: 24px; border: 0; background: #f3f0e3; color: #243d3d; }
+.route-viewer::backdrop { background: #041720d9; }
+.route-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.route-heading h2 { font: 500 clamp(30px, 4vw, 48px)/1.2 "Caveat", cursive; }
+.route-heading .round-button { border-color: #8b987b; }
+.route-scroll { overflow-x: auto; scrollbar-color: #a1aa90 transparent; }
+.route-canvas { position: relative; width: 100%; min-width: 750px; aspect-ratio: 2; }
+.route-canvas > img { display: block; width: 100%; height: 100%; }
+.route-viewer > p { font: 500 25px/1.3 "Caveat", cursive; margin: 12px 0 0; }
+.route-viewer button:focus-visible, .route-scroll:focus-visible { outline-color: #916327; }
+.travel-page #viewer-caption { font: 500 30px/1.3 "Caveat", cursive; }
+@media (max-width: 700px) { .route-viewer { padding: 16px; } }
