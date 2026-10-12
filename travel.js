@@ -46,6 +46,17 @@
     if (['zion', 'san-diego'].includes(destination.id)) return 'america';
     return 'europe';
   }
+  (CONFIG.travel.connections || []).forEach(([from, to]) => {
+    const start = destinations.find(destination => destination.id === from);
+    const end = destinations.find(destination => destination.id === to);
+    if (!start || !end) return;
+    const [x1, y1] = project(start.coordinates);
+    const [x2, y2] = project(end.coordinates);
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.dataset.region = regionFor(start);
+    path.setAttribute('d', `M ${x1} ${y1} Q ${(x1 + x2) / 2 - (y2 - y1) * .2} ${(y1 + y2) / 2 + (x2 - x1) * .2} ${x2} ${y2}`);
+    $('map-connections').append(path);
+  });
   function centerMap() {
     if (!selectedDestination) return;
     const viewport = document.querySelector('.map-scroll');
@@ -61,6 +72,9 @@
     destinations.forEach(destination => {
       const marker = document.querySelector(`.map-marker[data-destination="${destination.id}"]`);
       if (marker) marker.hidden = regionFor(destination) !== region;
+    });
+    document.querySelectorAll('#map-connections path').forEach(path => {
+      path.style.display = path.dataset.region === region ? '' : 'none';
     });
   }
   window.addEventListener('resize', centerMap);
@@ -113,6 +127,7 @@
     selectedDestination = destination;
     centerMap();
     photos = countPhotos(destination);
+    const films = CONFIG.videos.filter(video => video.destination === destination.id);
     document.querySelectorAll('[data-destination]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.destination === destination.id));
     });
@@ -126,12 +141,13 @@
       $('preview-image').src = cover.src;
       $('preview-image').alt = cover.alt;
     }
-    const count = `${String(photos.length).padStart(2, '0')} photographs`;
+    const count = `${String(photos.length).padStart(2, '0')} photographs${films.length ? ` / ${films.length} ${films.length === 1 ? 'film' : 'films'}` : ''}`;
     setText('gallery-region', destination.region);
     setText('destination-title', destination.name);
     setText('destination-count', count);
-    setText('atlas-status', `${destination.name}: ${photos.length} photographs`);
+    setText('atlas-status', `${destination.name}: ${count}`);
     $('travel-grid').replaceChildren();
+    renderFilms($('travel-grid'), films);
     photos.forEach((photo, index) => {
       const button = document.createElement('button');
       button.type = 'button';
@@ -150,7 +166,7 @@
       button.append(image, caption);
       $('travel-grid').append(button);
     });
-    $('empty-destination').hidden = photos.length > 0;
+    $('empty-destination').hidden = photos.length + films.length > 0;
     if (updateHash) history.replaceState(null, '', `#${destination.id}`);
   }
   function selectFromHash() {

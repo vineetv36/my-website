@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="light.css">
   <link rel="stylesheet" href="travel.css">
   <script src="config.js" defer></script>
+  <script src="films.js" defer></script>
   <script src="travel.js" defer></script>
 </head>
 <body class="travel-page">
@@ -20,7 +21,6 @@
   <main class="atlas-main">
     <section class="atlas-stage" aria-labelledby="atlas-title">
       <div class="atlas-story">
-        <p class="eyebrow">A personal atlas</p>
         <h1 id="atlas-title"></h1>
         <p class="atlas-introduction" id="atlas-introduction"></p>
         <nav class="destination-index" id="destinations" aria-label="Choose a destination"></nav>
@@ -29,6 +29,7 @@
         <div class="map-scroll" role="region" aria-label="Map of the selected destination’s region">
           <div class="map-canvas" id="map-canvas">
             <img src="public/maps/world.svg" width="1100" height="550" alt="Geographic map with country outlines from Natural Earth." decoding="async">
+            <svg class="map-connections" id="map-connections" viewBox="0 0 1100 550" aria-hidden="true"></svg>
             <div id="map-markers"></div>
           </div>
         </div>
@@ -40,7 +41,6 @@
         <p class="preview-description" id="preview-description"></p>
         <button class="atlas-open" id="view-destination" type="button">Explore the collection <span aria-hidden="true">↗</span></button>
       </aside>
-      <div class="map-caption"><span><i aria-hidden="true"></i> Places photographed</span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Geography: Natural Earth ↗</a></div>
     </section>
     <p class="sr-only" id="atlas-status" role="status"></p>
     <section class="destination-gallery" id="destination-gallery" aria-labelledby="destination-title">

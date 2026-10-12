@@ -78,14 +78,15 @@ const CONFIG = {
     title: ["A few places.", "A thousand", "stories."],
     introduction: "Photographs from distant coasts, quiet cities, and wild landscapes. A little further from the everyday.",
     defaultDestination: "iceland",
+    connections: [["iceland", "norway"], ["norway", "portugal"], ["korea", "japan"], ["zion", "san-diego"]],
     destinations: [
-      { id: "iceland", name: "Iceland", region: "Northern Europe", folder: "public/images/iceland/", cover: "iceland1.webp", coordinates: [-19, 64.9], labelOffset: [-16, -23], description: "Black-sand shores, falling water, and a landscape shaped by the elements." },
-      { id: "norway", name: "Norway", region: "Northern Europe", folder: "public/images/norway/", cover: "norway3.webp", coordinates: [11, 64], labelOffset: [18, -18], description: "Snow-covered fjords, blue mountain silhouettes, and light moving across the night sky." },
-      { id: "portugal", name: "Portugal", region: "Southern Europe", folder: "public/images/portugal/", cover: "portugal1.webp", coordinates: [-8.2, 39.4], labelOffset: [-19, 24], description: "Warm stone, colorful palaces, and small details found along the city streets." },
-      { id: "japan", name: "Japan", region: "East Asia", folder: "public/images/japan/", cover: "DSCF1336.webp", coordinates: [138.2, 36.2], labelOffset: [19, 19], description: "Cherry blossoms beneath Mount Fuji, quiet gardens, and streets that come alive after dark." },
-      { id: "korea", name: "Korea", region: "East Asia", folder: "public/images/korea/", cover: "DSCF1552.webp", coordinates: [127.9, 36.5], labelOffset: [-16, -25], description: "Pink skies over the city, lantern-lit evenings, and reflections along the water." },
-      { id: "zion", name: "Zion", region: "Utah · United States", folder: "public/images/zionnps/", cover: "zionnps1.webp", coordinates: [-113.03, 37.3], labelOffset: [20, -25], description: "Sandstone walls, winding canyon roads, and a sky full of stars." },
-      { id: "san-diego", name: "San Diego", region: "California · United States", folder: "public/images/sandiego/", cover: "DSCF1784.webp", coordinates: [-117.16, 32.72], labelOffset: [-19, 25], description: "Pacific cliffs, sea air, and warm afternoon light beneath garden arches." },
+      { id: "iceland", name: "Iceland", region: "Fire & ice", folder: "public/images/iceland/", cover: "iceland1.webp", coordinates: [-19, 64.9], labelOffset: [-16, -23], description: "Black-sand shores, falling water, and a landscape shaped by the elements." },
+      { id: "norway", name: "Norway", region: "Scandinavia", folder: "public/images/norway/", cover: "norway3.webp", coordinates: [11, 64], labelOffset: [18, -18], description: "Snow-covered fjords, blue mountain silhouettes, and light moving across the night sky." },
+      { id: "portugal", name: "Portugal", region: "The Atlantic edge", folder: "public/images/portugal/", cover: "portugal1.webp", coordinates: [-8.2, 39.4], labelOffset: [-19, 24], description: "Warm stone, colorful palaces, and small details found along the city streets." },
+      { id: "japan", name: "Japan", region: "Blossoms & neon", folder: "public/images/japan/", cover: "DSCF1336.webp", coordinates: [138.2, 36.2], labelOffset: [19, 19], description: "Cherry blossoms beneath Mount Fuji, quiet gardens, and streets that come alive after dark." },
+      { id: "korea", name: "Korea", region: "Lanterns & late nights", folder: "public/images/korea/", cover: "DSCF1552.webp", coordinates: [127.9, 36.5], labelOffset: [-16, -25], description: "Pink skies over the city, lantern-lit evenings, and reflections along the water." },
+      { id: "zion", name: "Zion", region: "Red rock country", folder: "public/images/zionnps/", cover: "zionnps1.webp", coordinates: [-113.03, 37.3], labelOffset: [20, -25], description: "Sandstone walls, winding canyon roads, and a sky full of stars." },
+      { id: "san-diego", name: "San Diego", region: "Pacific daydreams", folder: "public/images/sandiego/", cover: "DSCF1784.webp", coordinates: [-117.16, 32.72], labelOffset: [-19, 25], description: "Pacific cliffs, sea air, and warm afternoon light beneath garden arches." },
     ],
   },
 
@@ -100,6 +101,7 @@ const CONFIG = {
     },
     {
       location: "San Diego",
+      destination: "san-diego",
       title: "Summertime San Diego | Osmo Pocket 4 & Fujifilm X100VI",
       category: "Travel",
       runtime: "2:11",
@@ -108,6 +110,7 @@ const CONFIG = {
     },
     {
       location: "Japan",
+      destination: "japan",
       title: "A Slice of Japan | Cinematic Travel Film | Fujifilm X100VI",
       category: "Travel",
       runtime: "3:54",

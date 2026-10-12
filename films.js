@@ -1,7 +1,7 @@
 'use strict';
 
-function renderFilms(container) {
-  CONFIG.videos.forEach(video => {
+function renderFilms(container, videos = CONFIG.videos) {
+  videos.forEach(video => {
     const link = document.createElement('a');
     link.className = 'film-card';
     link.href = video.url;
