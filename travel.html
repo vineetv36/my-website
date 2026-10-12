@@ -18,34 +18,30 @@
     <nav class="site-nav" id="site-nav" aria-label="Main navigation"></nav>
   </header>
   <main class="atlas-main">
-    <section class="atlas-intro" aria-labelledby="atlas-title">
-      <div><p class="eyebrow">Travel / A photographic atlas</p><h1 id="atlas-title"></h1></div>
-      <div class="atlas-intro-copy"><p id="atlas-introduction"></p><span class="atlas-stat" id="atlas-stat"></span></div>
-    </section>
-    <section class="atlas-workspace" aria-label="Explore destinations on the map">
+    <section class="atlas-stage" aria-labelledby="atlas-title">
+      <div class="atlas-story">
+        <p class="eyebrow">A personal atlas</p>
+        <h1 id="atlas-title"></h1>
+        <p class="atlas-introduction" id="atlas-introduction"></p>
+        <nav class="destination-index" id="destinations" aria-label="Choose a destination"></nav>
+      </div>
       <div class="atlas-map-panel">
-        <div class="atlas-map-heading"><span class="eyebrow">Field notes / The world</span><span class="map-compass" aria-hidden="true">N ↑</span></div>
-        <div class="map-scroll" tabindex="0" role="region" aria-label="World map. Scroll horizontally on small screens to explore all destinations.">
+        <div class="map-scroll" role="region" aria-label="Map of the selected destination’s region">
           <div class="map-canvas" id="map-canvas">
-            <img src="public/maps/world.svg" width="1100" height="550" alt="World map in an Equal Earth projection, showing accurate country outlines." decoding="async">
+            <img src="public/maps/world.svg" width="1100" height="550" alt="Geographic map with country outlines from Natural Earth." decoding="async">
             <div id="map-markers"></div>
-            <span class="ocean-label ocean-pacific" aria-hidden="true">Pacific Ocean</span>
-            <span class="ocean-label ocean-atlantic" aria-hidden="true">Atlantic Ocean</span>
-            <span class="ocean-label ocean-indian" aria-hidden="true">Indian Ocean</span>
           </div>
         </div>
-        <div class="map-caption"><span><i aria-hidden="true"></i> Places with photographs</span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Map: Natural Earth ↗</a><span class="map-scroll-hint" id="map-hint" hidden>Swipe to explore the map →</span></div>
       </div>
       <aside class="destination-preview" aria-labelledby="preview-title">
-        <p class="eyebrow" id="preview-region"></p>
+        <p class="preview-region" id="preview-region"></p>
+        <img id="preview-image" decoding="async" alt="">
         <h2 id="preview-title"></h2>
         <p class="preview-description" id="preview-description"></p>
-        <img id="preview-image" decoding="async" alt="">
-        <div class="preview-meta"><span id="preview-count"></span><span id="preview-coordinates"></span></div>
-        <button class="atlas-open" id="view-destination" type="button">Explore the photographs <span aria-hidden="true">↘</span></button>
+        <button class="atlas-open" id="view-destination" type="button">Explore the collection <span aria-hidden="true">↗</span></button>
       </aside>
+      <div class="map-caption"><span><i aria-hidden="true"></i> Places photographed</span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Geography: Natural Earth ↗</a></div>
     </section>
-    <nav class="destination-index" id="destinations" aria-label="Choose a destination"></nav>
     <p class="sr-only" id="atlas-status" role="status"></p>
     <section class="destination-gallery" id="destination-gallery" aria-labelledby="destination-title">
       <div class="destination-heading"><div><p class="eyebrow" id="gallery-region"></p><h2 id="destination-title"></h2></div><p id="destination-count"></p></div>

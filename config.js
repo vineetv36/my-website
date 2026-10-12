@@ -75,8 +75,8 @@ const CONFIG = {
   },
 
   travel: {
-    title: ["A world", "of stories."],
-    introduction: "Follow a place, find a photograph. A growing atlas of the landscapes, cities, and quiet moments along the way.",
+    title: ["A few places.", "A thousand", "stories."],
+    introduction: "Photographs from distant coasts, quiet cities, and wild landscapes. A little further from the everyday.",
     defaultDestination: "iceland",
     destinations: [
       { id: "iceland", name: "Iceland", region: "Northern Europe", folder: "public/images/iceland/", cover: "iceland1.webp", coordinates: [-19, 64.9], labelOffset: [-16, -23], description: "Black-sand shores, falling water, and a landscape shaped by the elements." },

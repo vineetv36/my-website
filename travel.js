@@ -22,12 +22,12 @@
   CONFIG.travel.title.forEach((line, index) => {
     const span = document.createElement('span');
     span.textContent = line;
-    if (index === 1) span.className = 'gold-text';
+    if (index === 2) span.className = 'atlas-title-italic';
     $('atlas-title').append(span);
   });
   setText('atlas-introduction', CONFIG.travel.introduction);
   const countPhotos = destination => CONFIG.overview.photos.filter(photo => photo.src.startsWith(destination.folder));
-  setText('atlas-stat', `${String(destinations.length).padStart(2, '0')} destinations / ${destinations.reduce((sum, destination) => sum + countPhotos(destination).length, 0)} photographs`);
+
 
   // Equal Earth projection, matching public/maps/world.svg (1100 × 550).
   // Longitude and latitude stay in config; no hand-positioned destination pins.
@@ -41,15 +41,27 @@
     const y = l * (1.340264 + -.081106 * l2 + l6 * (.000893 + .003796 * l2));
     return [550 + 190 * x, 275 - 190 * y];
   }
-  function coordinates([longitude, latitude]) {
-    return `${Math.abs(latitude).toFixed(1)}°${latitude >= 0 ? 'N' : 'S'} / ${Math.abs(longitude).toFixed(1)}°${longitude >= 0 ? 'E' : 'W'}`;
+  function regionFor(destination) {
+    if (['japan', 'korea'].includes(destination.id)) return 'asia';
+    if (['zion', 'san-diego'].includes(destination.id)) return 'america';
+    return 'europe';
   }
   function centerMap() {
-    const viewport = document.querySelector('.map-scroll');
-    $('map-hint').hidden = viewport.scrollWidth <= viewport.clientWidth;
     if (!selectedDestination) return;
-    const [x] = project(selectedDestination.coordinates);
-    viewport.scrollTo({ left: x / 1100 * $('map-canvas').clientWidth - viewport.clientWidth / 2, behavior: 'instant' });
+    const viewport = document.querySelector('.map-scroll');
+    const canvas = $('map-canvas');
+    const region = regionFor(selectedDestination);
+    const centers = { europe: [-5, 54], asia: [134, 37], america: [-115, 36] };
+    const [x, y] = project(centers[region]);
+    const scale = canvas.clientWidth / 1100;
+    const desktop = window.innerWidth > 900;
+    const targetX = viewport.clientWidth * (desktop ? .58 : .5);
+    const targetY = viewport.clientHeight * (desktop ? .22 : .45);
+    canvas.style.transform = `translate(${targetX - x * scale}px, ${targetY - y * scale}px)`;
+    destinations.forEach(destination => {
+      const marker = document.querySelector(`.map-marker[data-destination="${destination.id}"]`);
+      if (marker) marker.hidden = regionFor(destination) !== region;
+    });
   }
   window.addEventListener('resize', centerMap);
   destinations.forEach((destination, index) => {
@@ -81,7 +93,18 @@
     const number = document.createElement('span');
     number.textContent = String(index + 1).padStart(2, '0');
     number.setAttribute('aria-hidden', 'true');
-    button.append(number, document.createTextNode(destination.name));
+    const thumbnail = new Image();
+    thumbnail.src = destination.folder + destination.cover;
+    thumbnail.alt = '';
+    thumbnail.loading = 'lazy';
+    const name = document.createElement('span');
+    name.className = 'destination-name';
+    name.textContent = destination.name;
+    const arrow = document.createElement('span');
+    arrow.className = 'destination-arrow';
+    arrow.textContent = '↗';
+    arrow.setAttribute('aria-hidden', 'true');
+    button.append(number, thumbnail, name, arrow);
     button.addEventListener('click', () => selectDestination(destination));
     $('destinations').append(button);
   });
@@ -94,7 +117,7 @@
       button.setAttribute('aria-pressed', String(button.dataset.destination === destination.id));
     });
     const index = String(destinations.indexOf(destination) + 1).padStart(2, '0');
-    setText('preview-region', `${index} / ${destination.region}`);
+    setText('preview-region', `Selected collection / ${index}`);
     setText('preview-title', destination.name);
     setText('preview-description', destination.description);
     const cover = photos.find(photo => photo.src === destination.folder + destination.cover) || photos[0];
@@ -104,8 +127,6 @@
       $('preview-image').alt = cover.alt;
     }
     const count = `${String(photos.length).padStart(2, '0')} photographs`;
-    setText('preview-count', count);
-    setText('preview-coordinates', coordinates(destination.coordinates));
     setText('gallery-region', destination.region);
     setText('destination-title', destination.name);
     setText('destination-count', count);
