@@ -29,7 +29,7 @@
 .destination-index button:hover { color: #a2662a; }
 .destination-preview { position: absolute; z-index: 3; right: var(--gutter); bottom: 78px; width: clamp(270px, 24vw, 370px); padding: 14px 14px 24px; background: #fffdf2; box-shadow: 0 15px 50px #283e3626; transform: rotate(2deg); }
 #preview-image { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #d7dec5; }
-.destination-preview h2 { font: 500 52px/1.15 "Caveat", cursive; letter-spacing: 0; margin: 17px 7px 20px; transform: rotate(-2deg); }
+.destination-preview h2 { font: 400 42px/1.2 "Caveat", cursive; letter-spacing: 0; margin: 17px 7px 20px; transform: rotate(-2deg); }
 .atlas-open { display: flex; align-items: center; justify-content: space-between; width: calc(100% - 14px); margin: 0 7px; border: 0; padding: 0; background: transparent; text-align: left; color: var(--atlas-ink); font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
 .atlas-open:hover { color: #a2662a; }
 .atlas-open span { font-size: 17px; }
@@ -42,7 +42,6 @@
 .atlas-photo-grid { columns: 3; column-gap: 22px; }
 .atlas-photo { display: block; width: 100%; break-inside: avoid; border: 0; padding: 0; margin: 0 0 25px; background: transparent; text-align: left; }
 .atlas-photo img { display: block; width: 100%; height: auto; background: #193640; }
-.atlas-photo span { display: block; margin-top: 10px; color: var(--muted); font: 9px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
 .atlas-photo:hover img { opacity: .88; }
 @media (min-width: 1700px) { .atlas-story { width: 370px; } .atlas-stage { min-height: 1000px; } }
 @media (max-width: 1100px) and (min-width: 901px) {
@@ -66,7 +65,7 @@
  .map-canvas { width: 1900px; }
  .destination-preview { position: relative; right: auto; bottom: auto; width: min(400px, 80%); align-self: flex-end; margin: -50px max(28px, 6vw) 35px 0; padding: 12px 12px 23px; transform: rotate(1.5deg); }
  #preview-image { aspect-ratio: 4 / 3; }
- .destination-preview h2 { font-size: 46px; }
+ .destination-preview h2 { font-size: 36px; }
  .atlas-photo-grid { columns: 2; }
 }
 @media (max-width: 430px) {

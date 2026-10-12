@@ -124,7 +124,7 @@
     document.querySelectorAll('[data-destination]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.destination === destination.id));
     });
-    setText('preview-title', destination.name);
+    setText('preview-title', destination.postcardCaption ?? destination.name);
     const cover = photos.find(photo => photo.src === destination.folder + destination.cover) || photos[0];
     $('preview-image').hidden = !cover;
     if (cover) {
@@ -151,9 +151,7 @@
       image.height = photo.height;
       image.loading = 'lazy';
       image.decoding = 'async';
-      const caption = document.createElement('span');
-      caption.textContent = destination.name;
-      button.append(image, caption);
+      button.append(image);
       $('travel-grid').append(button);
     });
     $('empty-destination').hidden = photos.length + films.length > 0;

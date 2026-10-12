@@ -79,14 +79,16 @@ const CONFIG = {
     introduction: "Photographs from distant coasts, quiet cities, and wild landscapes. A little further from the everyday.",
     defaultDestination: "iceland",
     connections: [["san-diego", "zion"], ["zion", "iceland"], ["iceland", "norway"], ["norway", "portugal"], ["portugal", "korea"], ["korea", "japan"]],
+    // Edit postcardCaption below to change the handwritten text on each postcard.
+    // The location names are placeholders; gallery and map names stay separate.
     destinations: [
-      { id: "iceland", name: "Iceland", region: "Fire & ice", folder: "public/images/iceland/", cover: "iceland1.webp", coordinates: [-19, 64.9], labelOffset: [-16, -23] },
-      { id: "norway", name: "Norway", region: "Scandinavia", folder: "public/images/norway/", cover: "norway3.webp", coordinates: [11, 64], labelOffset: [18, -18] },
-      { id: "portugal", name: "Portugal", region: "The Atlantic edge", folder: "public/images/portugal/", cover: "portugal1.webp", coordinates: [-8.2, 39.4], labelOffset: [-19, 24] },
-      { id: "japan", name: "Japan", region: "Blossoms & neon", folder: "public/images/japan/", cover: "DSCF1336.webp", coordinates: [138.2, 36.2], labelOffset: [19, 19] },
-      { id: "korea", name: "Korea", region: "Lanterns & late nights", folder: "public/images/korea/", cover: "DSCF1552.webp", coordinates: [127.9, 36.5], labelOffset: [-16, -25] },
-      { id: "zion", name: "Zion", region: "Red rock country", folder: "public/images/zionnps/", cover: "zionnps1.webp", coordinates: [-113.03, 37.3], labelOffset: [20, -25] },
-      { id: "san-diego", name: "San Diego", region: "Pacific daydreams", folder: "public/images/sandiego/", cover: "DSCF1784.webp", coordinates: [-117.16, 32.72], labelOffset: [-19, 25] },
+      { id: "iceland", name: "Iceland", postcardCaption: "Iceland", region: "Fire & ice", folder: "public/images/iceland/", cover: "iceland1.webp", coordinates: [-19, 64.9], labelOffset: [-16, -23] },
+      { id: "norway", name: "Norway", postcardCaption: "Norway", region: "Scandinavia", folder: "public/images/norway/", cover: "norway3.webp", coordinates: [11, 64], labelOffset: [18, -18] },
+      { id: "portugal", name: "Portugal", postcardCaption: "Portugal", region: "The Atlantic edge", folder: "public/images/portugal/", cover: "portugal1.webp", coordinates: [-8.2, 39.4], labelOffset: [-19, 24] },
+      { id: "japan", name: "Japan", postcardCaption: "Japan", region: "Blossoms & neon", folder: "public/images/japan/", cover: "DSCF1336.webp", coordinates: [138.2, 36.2], labelOffset: [19, 19] },
+      { id: "korea", name: "Korea", postcardCaption: "Korea", region: "Lanterns & late nights", folder: "public/images/korea/", cover: "DSCF1552.webp", coordinates: [127.9, 36.5], labelOffset: [-16, -25] },
+      { id: "zion", name: "Zion", postcardCaption: "Zion", region: "Red rock country", folder: "public/images/zionnps/", cover: "zionnps1.webp", coordinates: [-113.03, 37.3], labelOffset: [20, -25] },
+      { id: "san-diego", name: "San Diego", postcardCaption: "San Diego", region: "Pacific daydreams", folder: "public/images/sandiego/", cover: "DSCF1784.webp", coordinates: [-117.16, 32.72], labelOffset: [-19, 25] },
     ],
   },
 
