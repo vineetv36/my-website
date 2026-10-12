@@ -76,19 +76,19 @@ const CONFIG = {
 
   travel: {
     title: ["A few places.", "A thousand", "stories."],
-    introduction: "Photographs from distant coasts, quiet cities, and wild landscapes. A little further from the everyday.",
+    introduction: "Follow my journey from around the world.",
     defaultDestination: "iceland",
     connections: [["san-diego", "zion"], ["zion", "iceland"], ["iceland", "norway"], ["norway", "portugal"], ["portugal", "korea"], ["korea", "japan"]],
     // Edit postcardCaption below to change the handwritten text on each postcard.
     // The location names are placeholders; gallery and map names stay separate.
     destinations: [
-      { id: "iceland", name: "Iceland", postcardCaption: "Iceland", region: "Fire & ice", folder: "public/images/iceland/", cover: "iceland1.webp", coordinates: [-19, 64.9], labelOffset: [-16, -23] },
-      { id: "norway", name: "Norway", postcardCaption: "Norway", region: "Scandinavia", folder: "public/images/norway/", cover: "norway3.webp", coordinates: [11, 64], labelOffset: [18, -18] },
-      { id: "portugal", name: "Portugal", postcardCaption: "Portugal", region: "The Atlantic edge", folder: "public/images/portugal/", cover: "portugal1.webp", coordinates: [-8.2, 39.4], labelOffset: [-19, 24] },
-      { id: "japan", name: "Japan", postcardCaption: "Japan", region: "Blossoms & neon", folder: "public/images/japan/", cover: "DSCF1336.webp", coordinates: [138.2, 36.2], labelOffset: [19, 19] },
-      { id: "korea", name: "Korea", postcardCaption: "Korea", region: "Lanterns & late nights", folder: "public/images/korea/", cover: "DSCF1552.webp", coordinates: [127.9, 36.5], labelOffset: [-16, -25] },
-      { id: "zion", name: "Zion", postcardCaption: "Zion", region: "Red rock country", folder: "public/images/zionnps/", cover: "zionnps1.webp", coordinates: [-113.03, 37.3], labelOffset: [20, -25] },
-      { id: "san-diego", name: "San Diego", postcardCaption: "San Diego", region: "Pacific daydreams", folder: "public/images/sandiego/", cover: "DSCF1784.webp", coordinates: [-117.16, 32.72], labelOffset: [-19, 25] },
+      { id: "iceland", name: "Iceland", postcardCaption: "Black sands of Reynisfjara Beach", region: "Fire & ice", folder: "public/images/iceland/", cover: "iceland1.webp", coordinates: [-19, 64.9], labelOffset: [-16, -23] },
+      { id: "norway", name: "Norway", postcardCaption: "Auroras dancing over Tromsø", region: "Scandinavia", folder: "public/images/norway/", cover: "norway3.webp", coordinates: [11, 64], labelOffset: [18, -18] },
+      { id: "portugal", name: "Portugal", postcardCaption: "Alleyways of Porto", region: "The Atlantic edge", folder: "public/images/portugal/", cover: "portugal1.webp", coordinates: [-8.2, 39.4], labelOffset: [-19, 24] },
+      { id: "japan", name: "Japan", postcardCaption: "Cherry blossom season", region: "Blossoms & neon", folder: "public/images/japan/", cover: "DSCF1336.webp", coordinates: [138.2, 36.2], labelOffset: [19, 19] },
+      { id: "korea", name: "Korea", postcardCaption: "Golden hour over Seoul", region: "Lanterns & late nights", folder: "public/images/korea/", cover: "DSCF1552.webp", coordinates: [127.9, 36.5], labelOffset: [-16, -25] },
+      { id: "zion", name: "Zion", postcardCaption: "Zion National Park", region: "Red rock country", folder: "public/images/zionnps/", cover: "zionnps1.webp", coordinates: [-113.03, 37.3], labelOffset: [20, -25] },
+      { id: "san-diego", name: "San Diego", postcardCaption: "Torrey Pines State Natural Preserve", region: "Pacific daydreams", folder: "public/images/sandiego/", cover: "DSCF1784.webp", coordinates: [-117.16, 32.72], labelOffset: [-19, 25] },
     ],
   },
 
@@ -125,8 +125,7 @@ const CONFIG = {
     portrait: "public/images/portrait/portrait1.webp", // e.g. "public/images/portrait.webp"
     bio: [
       "I'm a DC-based travel photographer chasing the extraordinary moments, forgotten details and everything in between.",
-      "I started traveling back in 2017 and since then, I've been to 5 continents and over 20 countries. Throughout my travels, I've captured cityscape moments, grand vistas in nature and life through different cultures",
-      "Now I'm embarking on a journey of sharing these memories to the world and I hope you can join me as I learn a thing or two about art, cinematography and content creation."
+      "I've traveled to 5 continents and over 20 countries. Follow my journey as I share these memories through photography and film."
     ],
     clients: [
       // { name: "Patagonia", years: "2022 — present" },
