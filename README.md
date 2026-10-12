@@ -13,9 +13,10 @@ Edit `config.js`:
 - `light`: hero image, headline, navigation, and the five time-of-day labels. `defaultPeriod` selects the opening gallery. Each period can set `backdrop` to a photo path in its gallery; otherwise its first photo is used. `backdropSrc` points to the high-resolution JPG and `backdropSrcset` lists responsive WebP versions from `public/images/backdrops/`; gallery thumbnails stay separate. Regenerate the responsive versions when replacing a backdrop original.
 - `overview.photos`: each photo has a relative `src`, descriptive `alt`, `location`, actual `width` and `height`, and a `light` value of `blue-hour`, `first-light`, `daylight`, `golden-hour`, or `night`.
 - These light groups are an initial editorial selection based on appearance, not verified capture-time metadata. Reassign them to match your recollection of each shoot.
+- `travel`: atlas copy, default destination, and destination entries. Each entry uses its photo folder to select gallery images, a cover filename, geographic `[longitude, latitude]`, and a map-label offset. Destination links can be shared as `travel.html#japan`.
 - `videos`: actual YouTube watch URLs, thumbnail URLs, titles, locations, and runtimes. Thumbnails need access to YouTube's image host; the titled film links remain usable if images cannot load.
 
-The homepage uses `light.css` and `light.js`; About shares `light.css` and uses `about.js`; Videos shares `light.css` and uses `videos.js`. Film cards on both the homepage and Videos page use `films.js`. Travel retains `style.css` and `nav.js`. The redesigned homepage links Photography to its gallery, Films to its film section, and About to `info.html`. The film section also links to the full Videos page.
+The homepage uses `light.css` and `light.js`; About shares `light.css` and uses `about.js`; Videos shares `light.css` and uses `videos.js`. Film cards on both the homepage and Videos page use `films.js`. Travel uses `light.css`, `travel.css`, and `travel.js` for the interactive atlas. The redesigned homepage links Photography to its gallery, Films to its film section, and About to `info.html`. The film section also links to the full Videos page.
 
 ## Local preview
 
@@ -30,3 +31,7 @@ Open `http://localhost:8000`. This is only a local preview server; GitHub Pages 
 ## Controls
 
 Select a light category to replace the single horizontal gallery. Scroll or swipe the strip, or use its previous/next buttons. The category buttons support Left/Right, Home, and End keys. Select a photograph for the modal viewer; use Left/Right to browse and Escape to close. Reduced-motion preferences are respected.
+
+## Atlas map
+
+The atlas serves a local SVG generated from Natural Earth’s public-domain 1:50m country outlines in an Equal Earth projection. Markers use the same projection and real coordinates. Country markers are representative locations, not exact photo locations. See `public/maps/README.md` for the source and projection details. No map API, runtime mapping dependency, or build step is required.

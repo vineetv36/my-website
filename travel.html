@@ -2,90 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#041720">
+  <meta name="description" content="A photographic atlas by Vineet Velmurugan. Explore photographs from Iceland, Norway, Portugal, Japan, Korea, Zion, and San Diego.">
+  <title>Travel Atlas — Vineet Velmurugan</title>
+  <link rel="stylesheet" href="light.css">
+  <link rel="stylesheet" href="travel.css">
+  <script src="config.js" defer></script>
+  <script src="travel.js" defer></script>
 </head>
-<body>
-  <nav>
-    <div class="nav-left">
-      <a class="site-name" href="index.html" id="nav-name"></a>
-      <div class="nav-icons" id="nav-icons"></div>
-    </div>
-    <div class="nav-links" id="nav-links"></div>
-    <div class="nav-hamburger"><span></span><span></span></div>
-  </nav>
-
-  <div class="travel-grid" id="travel-grid"></div>
-
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="">
-    <span class="lightbox-hint">click anywhere · esc to close</span>
-  </div>
-
-  <footer>
-    <span class="footer-copy" id="footer-copy"></span>
-    <div class="footer-links" id="footer-links"></div>
+<body class="travel-page">
+  <a class="skip-link" href="#destinations">Skip to destinations</a>
+  <header class="site-header">
+    <a class="site-name" id="site-name" href="index.html"></a>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation"></nav>
+  </header>
+  <main class="atlas-main">
+    <section class="atlas-intro" aria-labelledby="atlas-title">
+      <div><p class="eyebrow">Travel / A photographic atlas</p><h1 id="atlas-title"></h1></div>
+      <div class="atlas-intro-copy"><p id="atlas-introduction"></p><span class="atlas-stat" id="atlas-stat"></span></div>
+    </section>
+    <section class="atlas-workspace" aria-label="Explore destinations on the map">
+      <div class="atlas-map-panel">
+        <div class="atlas-map-heading"><span class="eyebrow">Field notes / The world</span><span class="map-compass" aria-hidden="true">N ↑</span></div>
+        <div class="map-scroll" tabindex="0" role="region" aria-label="World map. Scroll horizontally on small screens to explore all destinations.">
+          <div class="map-canvas" id="map-canvas">
+            <img src="public/maps/world.svg" width="1100" height="550" alt="World map in an Equal Earth projection, showing accurate country outlines." decoding="async">
+            <div id="map-markers"></div>
+            <span class="ocean-label ocean-pacific" aria-hidden="true">Pacific Ocean</span>
+            <span class="ocean-label ocean-atlantic" aria-hidden="true">Atlantic Ocean</span>
+            <span class="ocean-label ocean-indian" aria-hidden="true">Indian Ocean</span>
+          </div>
+        </div>
+        <div class="map-caption"><span><i aria-hidden="true"></i> Places with photographs</span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Map: Natural Earth ↗</a><span class="map-scroll-hint" id="map-hint" hidden>Swipe to explore the map →</span></div>
+      </div>
+      <aside class="destination-preview" aria-labelledby="preview-title">
+        <p class="eyebrow" id="preview-region"></p>
+        <h2 id="preview-title"></h2>
+        <p class="preview-description" id="preview-description"></p>
+        <img id="preview-image" decoding="async" alt="">
+        <div class="preview-meta"><span id="preview-count"></span><span id="preview-coordinates"></span></div>
+        <button class="atlas-open" id="view-destination" type="button">Explore the photographs <span aria-hidden="true">↘</span></button>
+      </aside>
+    </section>
+    <nav class="destination-index" id="destinations" aria-label="Choose a destination"></nav>
+    <p class="sr-only" id="atlas-status" role="status"></p>
+    <section class="destination-gallery" id="destination-gallery" aria-labelledby="destination-title">
+      <div class="destination-heading"><div><p class="eyebrow" id="gallery-region"></p><h2 id="destination-title"></h2></div><p id="destination-count"></p></div>
+      <div class="atlas-photo-grid" id="travel-grid"></div>
+      <p id="empty-destination" hidden>Photographs from this destination are on their way.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <a class="footer-name" id="footer-name" href="info.html"></a>
+    <div class="footer-details"><a id="contact-link">Contact</a><a id="youtube-link" target="_blank" rel="noopener noreferrer">YouTube</a><span id="copyright"></span></div>
   </footer>
-
-  <script src="config.js"></script>
-  <script src="nav.js"></script>
-  <script>
-    // Nav
-    document.getElementById("nav-name").textContent = CONFIG.name;
-    const navLinks = document.getElementById("nav-links");
-    CONFIG.nav.links.forEach(l => {
-      const a = document.createElement("a");
-      a.href = l.href;
-      a.textContent = l.label;
-      navLinks.appendChild(a);
-    });
-
-    // Travel grid
-    const grid = document.getElementById("travel-grid");
-    const destinations = CONFIG.travel.destinations;
-
-    if (destinations.length === 0) {
-      const placeholderBgs = ["#1a1a1a","#1e1e1e","#222222","#1c1c1c","#202020","#181818","#1b1b1b","#232323","#191919","#1d1d1d","#212121","#1f1f1f"];
-      const names = ["Iceland","Patagonia","Norway","Japan","New Zealand","Faroe Islands","Dolomites","Scotland","Swiss Alps","Lofoten","Tasmania","Namibia"];
-      for (let i = 0; i < 12; i++) {
-        const div = document.createElement("div");
-        div.className = "travel-cell";
-        div.style.background = placeholderBgs[i];
-        div.innerHTML = '<div class="travel-label"><span>' + names[i] + '</span></div>';
-        grid.appendChild(div);
-      }
-    } else {
-      destinations.forEach(dest => {
-        const src = dest.folder + dest.cover;
-        const div = document.createElement("div");
-        div.className = "travel-cell";
-        div.dataset.lightbox = src;
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = dest.name;
-        img.loading = "lazy";
-        div.appendChild(img);
-        div.innerHTML += '<div class="travel-label"><span>' + dest.name + '</span></div>';
-        grid.appendChild(div);
-      });
-    }
-
-    // Footer
-    document.getElementById("footer-copy").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
-    const footerLinks = document.getElementById("footer-links");
-    CONFIG.info.elsewhere.forEach(link => {
-      if (!link.url) return;
-      const a = document.createElement("a");
-      a.href = link.url;
-      a.target = "_blank";
-      a.textContent = link.label;
-      footerLinks.appendChild(a);
-    });
-    const contactA = document.createElement("a");
-    contactA.href = "mailto:" + CONFIG.email;
-    contactA.textContent = "Contact";
-    footerLinks.appendChild(contactA);
-  </script>
+  <dialog class="photo-viewer" id="photo-viewer" aria-label="Full-screen photograph">
+    <button type="button" class="viewer-close round-button" id="viewer-close" aria-label="Close photograph">×</button>
+    <div class="viewer-stage"><img id="viewer-image" alt=""></div>
+    <div class="viewer-bottom"><p id="viewer-caption" aria-live="polite"></p><div class="viewer-controls"><button class="round-button" type="button" id="viewer-prev" aria-label="Previous photograph">←</button><span id="viewer-counter"></span><button class="round-button" type="button" id="viewer-next" aria-label="Next photograph">→</button></div></div>
+  </dialog>
+  <noscript><p class="noscript">Enable JavaScript to explore the destination galleries. You can also <a href="index.html">return to Photography</a>.</p></noscript>
 </body>
 </html>
