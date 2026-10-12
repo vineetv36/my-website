@@ -25,8 +25,17 @@
     link.textContent = item.label;
     $('site-nav').append(link);
   });
-  $('hero-image').src = page.hero.src;
-  $('hero-image').alt = page.hero.alt;
+  function backdropFor(period) {
+    const gallery = CONFIG.overview.photos.filter(photo => photo.light === period.id);
+    const photo = gallery.find(photo => photo.src === period.backdrop) || gallery[0] || page.hero;
+    return { ...photo, src: period.backdropSrc || photo.src, srcset: period.backdropSrcset || '' };
+  }
+  const initialPeriod = page.periods.find(period => period.id === page.defaultPeriod) || page.periods[0];
+  const initialBackdrop = backdropFor(initialPeriod);
+  $('hero-image').sizes = '100vw';
+  $('hero-image').srcset = initialBackdrop.srcset;
+  $('hero-image').src = initialBackdrop.src;
+  $('hero-image').alt = initialBackdrop.alt;
   page.title.forEach(line => {
     const span = document.createElement('span');
     const parts = line.split(/(light\.?)/i);
@@ -58,6 +67,8 @@
   async function updateHero(photo) {
     const request = ++heroRequest;
     const image = new Image();
+    image.sizes = '100vw';
+    image.srcset = photo.srcset || '';
     image.src = photo.src;
     image.alt = photo.alt;
     image.className = 'hero-image';
@@ -111,7 +122,7 @@
   }
   function selectPeriod(period) {
     photos = CONFIG.overview.photos.filter(photo => photo.light === period.id);
-    updateHero(photos.find(photo => photo.src === period.backdrop) || photos[0] || page.hero);
+    updateHero(backdropFor(period));
     [...tabs.children].forEach(button => {
       const selected = button.dataset.period === period.id;
       button.setAttribute('aria-selected', String(selected));
