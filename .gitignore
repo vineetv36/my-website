@@ -1,7 +1,7 @@
 # macOS Finder metadata
 .DS_Store
 
-# Original images — keep locally, only commit the .webp versions
+# Original images — keep locally, except for the backdrop JPGs below
 public/images/**/*.jpg
 public/images/**/*.JPG
 public/images/**/*.jpeg
@@ -10,3 +10,7 @@ public/images/**/*.png
 public/images/**/*.PNG
 public/images/**/*.tiff
 public/images/**/*.tif
+
+# High-resolution backdrop JPGs
+!public/images/backdrops/*.[jJ][pP][gG]
+!public/images/backdrops/*.[jJ][pP][eE][gG]
