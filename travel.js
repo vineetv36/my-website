@@ -70,7 +70,17 @@
     canvas.style.transform = `translate(${targetX - x * scale}px, ${targetY - y * scale}px)`;
 
   }
-  window.addEventListener('resize', centerMap);
+  function fitPostcardCaption() {
+    const caption = $('preview-title');
+    caption.style.fontSize = '';
+    const available = caption.clientWidth;
+    if (available && caption.scrollWidth > available) {
+      const size = parseFloat(getComputedStyle(caption).fontSize);
+      caption.style.fontSize = `${Math.floor(size * (available - 2) / caption.scrollWidth * 10) / 10}px`;
+    }
+  }
+  window.addEventListener('resize', () => { centerMap(); fitPostcardCaption(); });
+  document.fonts.ready.then(fitPostcardCaption);
   destinations.forEach((destination, index) => {
     const marker = document.createElement('button');
     marker.type = 'button';
@@ -125,6 +135,7 @@
       button.setAttribute('aria-pressed', String(button.dataset.destination === destination.id));
     });
     setText('preview-title', destination.postcardCaption ?? destination.name);
+    fitPostcardCaption();
     const cover = photos.find(photo => photo.src === destination.folder + destination.cover) || photos[0];
     $('preview-image').hidden = !cover;
     if (cover) {

@@ -120,7 +120,7 @@ h2 { font: 400 clamp(30px, 3vw, 44px)/1.1 var(--serif); letter-spacing: -.035em;
 .about-portrait { margin: 0; padding-top: 45px; }
 .about-portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
 .about-portrait figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 15px; color: var(--muted); font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
-.about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; border-top: 1px solid var(--line); padding: 40px 0 60px; }
+.about-details { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 36px; border-top: 1px solid var(--line); padding: 32px 0 0; }
 .about-details .eyebrow { margin-bottom: 18px; }
 .about-details p { color: var(--muted); font-size: 17px; line-height: 1.7; }
 .about-list { list-style: none; padding: 0; margin: 0; font-size: 20px; line-height: 1.9; }
@@ -130,7 +130,7 @@ h2 { font: 400 clamp(30px, 3vw, 44px)/1.1 var(--serif); letter-spacing: -.035em;
  .about-bio { font-size: 16px; margin-top: 28px; }
  .about-bio p:first-child { font-size: 20px; }
  .about-portrait { padding-top: 0; }
- .about-details { grid-template-columns: 1fr; gap: 32px; padding: 32px 0 45px; }
+
 }
 
 .videos-main { margin: 0 var(--gutter); }
