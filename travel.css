@@ -1,4 +1,4 @@
-@font-face { font-family: "Patrick Hand"; src: url("public/fonts/PatrickHand-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caveat"; src: url("public/fonts/Caveat.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
 .travel-page { background: var(--bg); }
 .travel-page .site-header { position: relative; }
 .atlas-main { margin: 0; }
@@ -29,7 +29,7 @@
 .destination-index button:hover { color: #a2662a; }
 .destination-preview { position: absolute; z-index: 3; right: var(--gutter); bottom: 78px; width: clamp(270px, 24vw, 370px); padding: 14px 14px 24px; background: #fffdf2; box-shadow: 0 15px 50px #283e3626; }
 #preview-image { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #d7dec5; }
-.destination-preview h2 { font: 400 26px/1.2 "Patrick Hand", cursive; white-space: nowrap; letter-spacing: 0; margin: 17px 7px 20px; }
+.destination-preview h2 { font: 400 26px/1.2 "Caveat", cursive; white-space: nowrap; letter-spacing: 0; margin: 17px 7px 20px; }
 .atlas-open { display: flex; align-items: center; justify-content: space-between; width: calc(100% - 14px); margin: 0 7px; border: 0; padding: 0; background: transparent; text-align: left; color: var(--atlas-ink); font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
 .atlas-open:hover { color: #a2662a; }
 .atlas-open span { font-size: 17px; }
